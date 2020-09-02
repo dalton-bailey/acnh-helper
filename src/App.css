@@ -1,6 +1,31 @@
 .App {
   text-align: center;
+  display:flex;
 }
+
+.sens, .reps {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.listItem {
+  width:200px;
+  border: 1px solid grey;
+  margin: 10px;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 1px 1px 20px -10px rgba(158,158,158,1);;
+}
+
 
 .App-logo {
   height: 40vmin;
