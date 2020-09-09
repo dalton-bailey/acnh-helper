@@ -28,7 +28,7 @@ class Villagers extends Component {
                     allVillagers.map((villager, index) => {
                         return (
                             <div className="listItem">
-                                <img  src= {villager.imagePath}></img>
+                                <img alt=""  src = {villager.imagePath}></img>
                                 <p>
                                     {villager.name}
                                 </p>
