@@ -18,32 +18,6 @@ const allVillagers = villagerData.map(villager => {
 console.log(allVillagers)
 
 
-// class Villagers extends Component {
-
-//     render() {
-//     return (
-//         <div className="villagers">
-//             <h1>Villagers</h1>
-//             <div className="list">
-//                 {
-//                     allVillagers.map((villager, index) => {
-//                         return (
-//                             <div className="listItem">
-//                                 <img alt=""  src = {villager.imagePath}></img>
-//                                 <p>
-//                                     {villager.name}
-//                                 </p>
-//                             </div>
-//                         )
-//                     })
-//                 }
-//             </div>
-//         </div>
-//     )
-// }
-// }
-
-
 function Villagers() {
     return (
         <div className="villagers">
@@ -57,6 +31,9 @@ function Villagers() {
                                 <p>
                                     {villager.name}
                                 </p>
+                                <p>Personality: {villager.personality}</p>
+                                <p>Birthday: {villager.birthDay} {villager.birthMonth}</p>
+                                <p>Sign: {villager.sign}</p>
                             </div>
                         )
                     })

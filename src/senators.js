@@ -17,10 +17,13 @@ state = {
         const newMembers = [...this.state.members]
         const sortedMembers = newMembers.sort((a, b) => {
             return a.seniority - b.seniority
+
         })
+
         this.setState({
             members: sortedMembers
         })
+
     }
 
     render() {

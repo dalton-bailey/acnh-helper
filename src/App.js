@@ -8,10 +8,10 @@ import Villagers from './villagers'
 function App() {
   return (
     <div className="App">
-      {/* <Senators/>
-      <Representatives/> */}
-      <Villagers/>
+      {/* <Senators/> */}
+      {/* <Representatives/> */}
       <VillagersList/>
+      <Villagers/>
     </div>
   );
 }

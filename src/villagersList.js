@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import villagers from '../src/data/acnh.json'
 
 class VillagersFilter extends Component {
+
     state = {
         sheep: villagers.filter(villager => villager.species === 'Sheep'),
         bird: villagers.filter(villager => villager.species === 'Bird'),
@@ -35,46 +36,76 @@ class VillagersFilter extends Component {
         gorilla: villagers.filter(villager => villager.species === 'Gorilla')
     }
 
-    
+    sheepSortHandler = () => {
+       const newSheep = this.state.sheep.map((shee, index) => {
+           return {
+               imagePath: shee.image_url,
+               birthDay: shee.birthday_day,
+               birthMonth: shee.birthday_month,
+               sheepName: shee.name
+           }
+        })
+
+        this.setState({
+            sheep: newSheep
+        })
+
+        console.log(newSheep)
+
+    }
+
+    birdSortHandler = () => {
+        const newBirds = this.state.bird.map((bird, index) => {
+            return {
+                imagePath: bird.image_url,
+                birthDay: bird.birthday_day,
+                birthMonth: bird.birthday_month,
+                birdName: bird.name
+            }
+        })
+
+        this.setState({
+            bird: newBirds
+        })
+    }
+
+
     
     render() {
         return (
             <div className="species">
-                <button onClick>Sheep: {this.state.sheep.length} </button>
-                <button onClick>Birds: {this.state.bird.length} </button>
-                <button onClick>Squirrels: {this.state.squirrel.length} </button>
-                <button onClick>Pigs: {this.state.pig.length} </button>
-                <button onClick>Cubs: {this.state.cub.length} </button>
-                <button onClick>Alligator: {this.state.alligator.length} </button>
-                <button onClick>Koalas: {this.state.koala.length} </button>
-                <button onClick>Eagles: {this.state.eagle.length} </button>
-                <button onClick>Anteaters: {this.state.anteater.length} </button>
-                <button onClick>Penguins: {this.state.penguin.length} </button>
-                <button onClick>Bulls: {this.state.bull.length} </button>
-                <button onClick>Mice: {this.state.mouse.length} </button>
-                <button onClick>Cats: {this.state.cat.length} </button>
-                <button onClick>Horses: {this.state.horse.length} </button>
-                <button onClick>Hamsters: {this.state.hamster.length} </button>
-                <button onClick>Kangaroos: {this.state.kangaroo.length} </button>
-                <button onClick>Wolves: {this.state.wolf.length} </button>
-                <button onClick>Chickens: {this.state.chicken.length} </button>
-                <button onClick>Elephants: {this.state.elephant.length} </button>
-                <button onClick>Lions: {this.state.lion.length} </button>
-                <button onClick>Deer: {this.state.deer.length} </button>
-                <button onClick>Dogs: {this.state.dog.length} </button>
-                <button onClick>Tigers: {this.state.tiger.length} </button>
-                <button onClick>Bears: {this.state.bear.length} </button>
-                <button onClick>Cows: {this.state.cow.length} </button>
-                <button onClick>Hippos: {this.state.hippo.length} </button>
-                <button onClick>Ducks: {this.state.duck.length} </button>
-                <button onClick>Ostrichs: {this.state.ostrich.length} </button>
-                <button onClick>Rabbits: {this.state.rabbit.length} </button>
-                <button onClick>Gorillas: {this.state.gorilla.length} </button>
+                <button onClick={this.sheepSortHandler}>Sheep</button>
+                <button onClick={this.birdSortHandler}>Birds</button>
 
-
+                <div className="list">
+                    {
+                         this.state.sheep.map((shee, index) => {
+                            return (
+                                <div className="listItem">
+                                    <img alt="" src={shee.imagePath}></img>
+                                    <p>{shee.sheepName}</p>
+                                    <p>{shee.birthDay} {shee.birthMonth}</p>
+                                </div>
+                            )
+                         })
+                    }
+                </div>
+                <div className="list">
+                    {
+                         this.state.bird.map((bird, index) => {
+                            return (
+                                <div className="listItem">
+                                    <img alt="" src={bird.imagePath}></img>
+                                    <p>{bird.sheepName}</p>
+                                    <p>{bird.birthDay} {bird.birthMonth}</p>
+                                </div>
+                            )
+                         })
+                    }
+                </div>
             </div>
         )
     }
-}
 
+}
 export default VillagersFilter
