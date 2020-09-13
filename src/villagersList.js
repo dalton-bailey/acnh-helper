@@ -42,7 +42,9 @@ class VillagersFilter extends Component {
                imagePath: shee.image_url,
                birthDay: shee.birthday_day,
                birthMonth: shee.birthday_month,
-               sheepName: shee.name
+               sheepName: shee.name,
+               sheepSign: shee.sign,
+               sheepPersonality: shee.personality
            }
         })
 
@@ -60,7 +62,9 @@ class VillagersFilter extends Component {
                 imagePath: bird.image_url,
                 birthDay: bird.birthday_day,
                 birthMonth: bird.birthday_month,
-                birdName: bird.name
+                birdName: bird.name,
+                birdSign: bird.sign,
+                birdPersonality: bird.personality
             }
         })
 
@@ -84,7 +88,9 @@ class VillagersFilter extends Component {
                                 <div className="listItem">
                                     <img alt="" src={shee.imagePath}></img>
                                     <p>{shee.sheepName}</p>
+                                    <p>{shee.sheepPersonality}</p>
                                     <p>{shee.birthDay} {shee.birthMonth}</p>
+                                    <p>{shee.sheepSign}</p>
                                 </div>
                             )
                          })
@@ -96,8 +102,10 @@ class VillagersFilter extends Component {
                             return (
                                 <div className="listItem">
                                     <img alt="" src={bird.imagePath}></img>
-                                    <p>{bird.sheepName}</p>
+                                    <p>{bird.birdName}</p>
+                                    <p>{bird.birdPersonality}</p>
                                     <p>{bird.birthDay} {bird.birthMonth}</p>
+                                    <p>{bird.birdSign}</p>
                                 </div>
                             )
                          })
