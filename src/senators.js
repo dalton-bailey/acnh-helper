@@ -38,7 +38,7 @@ state = {
                                 <div className="listItem">
                                 {member.first_name} {member.last_name}
                                 <p>
-                                   Party: {member.partyName}
+                                   Party: {member.party}
                                 </p>
                                 <p>
                                    State: {member.state}

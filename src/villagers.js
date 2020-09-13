@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import villagerData from '../src/data/acnh.json'
+// import React, { Component } from 'react'
+import villagerData from './data/acnh.json'
+import React from 'react'
 
 const allVillagers = villagerData.map(villager => {
     return {
@@ -17,18 +18,42 @@ const allVillagers = villagerData.map(villager => {
 console.log(allVillagers)
 
 
-class Villagers extends Component {
+// class Villagers extends Component {
 
-    render() {
+//     render() {
+//     return (
+//         <div className="villagers">
+//             <h1>Villagers</h1>
+//             <div className="list">
+//                 {
+//                     allVillagers.map((villager, index) => {
+//                         return (
+//                             <div className="listItem">
+//                                 <img alt=""  src = {villager.imagePath}></img>
+//                                 <p>
+//                                     {villager.name}
+//                                 </p>
+//                             </div>
+//                         )
+//                     })
+//                 }
+//             </div>
+//         </div>
+//     )
+// }
+// }
+
+
+function Villagers() {
     return (
         <div className="villagers">
             <h1>Villagers</h1>
             <div className="list">
                 {
-                    allVillagers.map((villager, index) => {
+                    allVillagers.map(villager => {
                         return (
                             <div className="listItem">
-                                <img alt=""  src = {villager.imagePath}></img>
+                                <img alt="" src= {villager.imagePath}></img>
                                 <p>
                                     {villager.name}
                                 </p>
@@ -36,10 +61,10 @@ class Villagers extends Component {
                         )
                     })
                 }
+
             </div>
         </div>
     )
-}
 }
 
 export default Villagers
