@@ -113,7 +113,7 @@ class VillagersFilter extends Component {
                          this.state.squirrel.map((squirrel, index) => {
                             return (
                                 <div className="listItem">
-                                    <img src={squirrel.image_url}></img>
+                                    <img alt="" src={squirrel.image_url}></img>
                                     <p>{squirrel.name}</p>
                                     <p>Personality: {squirrel.personality}</p>
                                     <p>Birthday: {squirrel.birthday_day} {squirrel.birthday_month}</p>
