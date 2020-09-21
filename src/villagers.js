@@ -1,12 +1,12 @@
-// import React, { Component } from 'react'
 import villagerData from './data/acnh.json'
 import React from 'react'
+import LazyLoad from 'react-lazyload'
 
 const allVillagers = villagerData.map(villager => {
     return {
         name: villager.name,
         personality: villager.personality,
-        birthDay: villager.birthday_day,
+        birthDay: villager.birthday_day === '' ? 'No Birthday Data' : villager.birthday_day,
         birthMonth: villager.birthday_month,
         sign: villager.sign,
         quote: villager.quote,
@@ -27,14 +27,16 @@ function Villagers() {
                     allVillagers.map(villager => {
                         return (
                             <div className="listItem">
-                                <img alt="" src= {villager.imagePath}></img>
-                                <p>
-                                    {villager.name}
-                                </p>
-                                <p>Personality: {villager.personality}</p>
-                                <p>Birthday: {villager.birthDay} {villager.birthMonth}</p>
-                                <p>Sign: {villager.sign}</p>
-                            </div>
+                                <LazyLoad><img alt="" src= {villager.imagePath}></img></LazyLoad>
+                            
+                            <p>
+                                {villager.name}
+                            </p>
+                            <p>Personality: {villager.personality}</p>
+                            <p>Birthday: {villager.birthDay} {villager.birthMonth}</p>
+                            <p>Sign: {villager.sign}</p>
+                        </div>
+                            
                         )
                     })
                 }
