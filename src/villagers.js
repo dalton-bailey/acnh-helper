@@ -1,6 +1,7 @@
 import villagerData from "./data/acnh.json";
 import React from "react";
 import LazyLoad from "react-lazyload";
+import {} from '@material-ui/core'
 
 const allVillagers = villagerData.map((villager) => {
   return {

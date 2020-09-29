@@ -56,3 +56,19 @@ button:active {
   border: none;
 }
 
+.memes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 15%;
+}
+.memes div{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.memes img {
+  height: 200px;
+  margin: 10px;
+}
+

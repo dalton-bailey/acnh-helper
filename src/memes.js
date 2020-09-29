@@ -20,12 +20,12 @@ const Memes = () => {
     fetchMemes();
   }, []);
 
-//   console.log(memesData.memes)
+  //   console.log(memesData.memes)
 
   return (
     <div className="memes">
+      <h1>{memesData.memes.length} Memes</h1>
       <div>
-        <h1>{memesData.memes.length} Memes</h1>
         {memesData.memes.map((meme) => {
           return (
             <LazyLoad>
