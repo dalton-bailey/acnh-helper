@@ -3,7 +3,8 @@ import './App.css';
 // import Senators from './senators'
 // import Representatives from './representatives'
 import VillagersList from './villagersList'
-import Villagers from './villagers'
+// import Villagers from './villagers'
+import Memes from './memes'
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       {/* <Senators/> */}
       {/* <Representatives/> */}
       <VillagersList/>
-      <Villagers/>
+      {/* <Villagers/> */}
+      <Memes/>
     </div>
   );
 }
