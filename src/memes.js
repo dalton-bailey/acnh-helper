@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import LazyLoad from "react-lazyload";
+import { GridList, GridListTile } from "@material-ui/core";
 
 const Memes = () => {
   const [memesData, setMemesData] = useState({
@@ -20,20 +20,19 @@ const Memes = () => {
     fetchMemes();
   }, []);
 
-  //   console.log(memesData.memes)
 
   return (
     <div className="memes">
       <h1>{memesData.memes.length} Memes</h1>
-      <div>
-        {memesData.memes.map((meme) => {
-          return (
-            <LazyLoad>
-              <img alt="" src={meme.url}></img>
-            </LazyLoad>
-          );
-        })}
-      </div>
+        <GridList cellHeight={160} cols={5}>
+          {memesData.memes.map((meme) => {
+            return (
+                <GridListTile key={meme.id} cols={meme.cols || 1}>
+                  <img alt={meme.name} src={meme.url}/>
+                </GridListTile>
+            );
+          })}
+        </GridList>
     </div>
   );
 };

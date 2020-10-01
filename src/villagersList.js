@@ -7,33 +7,6 @@ class VillagersFilter extends Component {
         sheep: villagers.filter(villager => villager.species === 'Sheep'),
         bird: villagers.filter(villager => villager.species === 'Bird'),
         squirrel: villagers.filter(villager => villager.species === 'Squirrel'),
-        pig: villagers.filter(villager => villager.species === 'Pig'),
-        cub: villagers.filter(villager => villager.species === 'Cub'),
-        alligator: villagers.filter(villager => villager.species === 'Alligator'),
-        koala: villagers.filter(villager => villager.species === 'Koala'),
-        eagle: villagers.filter(villager => villager.species === 'Eagle'),
-        anteater: villagers.filter(villager => villager.species === 'Anteater'),
-        penguin: villagers.filter(villager => villager.species === 'Penguin'),
-        bull: villagers.filter(villager => villager.species === 'Bull'),
-        mouse: villagers.filter(villager => villager.species === 'Mouse'),
-        cat: villagers.filter(villager => villager.species === 'Cat'),
-        horse: villagers.filter(villager => villager.species === 'Horse'),
-        hamster: villagers.filter(villager => villager.species === 'Hamster'),
-        kangaroo: villagers.filter(villager => villager.species === 'Kangaroo'),
-        wolf: villagers.filter(villager => villager.species === 'Wolf'),
-        chicken: villagers.filter(villager => villager.species === 'Chicken'),
-        elephant: villagers.filter(villager => villager.species === 'Elephant'),
-        lion: villagers.filter(villager => villager.species === 'Lion'),
-        deer: villagers.filter(villager => villager.species === 'Deer'),
-        dog: villagers.filter(villager => villager.species === 'Dog'),
-        tiger: villagers.filter(villager => villager.species === 'Tiger'),
-        bear: villagers.filter(villager => villager.species === 'Bear'),
-        cow: villagers.filter(villager => villager.species === 'Cow'),
-        hippo: villagers.filter(villager => villager.species === 'Hippo'),
-        duck: villagers.filter(villager => villager.species === 'Duck'),
-        ostrich: villagers.filter(villager => villager.species === 'Ostrich'),
-        rabbit: villagers.filter(villager => villager.species === 'Rabbit'),
-        gorilla: villagers.filter(villager => villager.species === 'Gorilla'),
         showSheep: false,
         showBirds: false,
         showSquirrels: false
@@ -55,8 +28,6 @@ class VillagersFilter extends Component {
         const doesShow = this.state.showSquirrels;
         this.setState({showSquirrels: !doesShow})
     }
-
-
 
     
     render() {
