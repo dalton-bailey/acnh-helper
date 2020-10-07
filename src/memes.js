@@ -20,6 +20,8 @@ const Memes = () => {
     fetchMemes();
   }, []);
 
+  console.log(memesData.memes)
+
 
   return (
     <div className="memes">
