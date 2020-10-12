@@ -5,10 +5,12 @@ import "./App.css";
 import Villagers from "./components/villagers";
 import Bugs from "./components/bugs";
 import Fish from "./components/fish";
+import ButtonBarApp from "./components/layout"
 
 function App() {
   return (
     <div className="App">
+      <ButtonBarApp />
       {/* <Menu /> */}
       <Fish />
       <Bugs />
