@@ -18,12 +18,21 @@
 }
 
 .listItem {
-  width:200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:400px;
   border: 1px solid grey;
   margin: 10px;
   border-radius: 25px;
   padding: 10px;
   box-shadow: 1px 1px 20px -10px rgba(158,158,158,1);;
+}
+
+.listItem p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .listItem img {

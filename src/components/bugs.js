@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
+
 
 const Bugs = () => {
   const [bugsData, setBugsData] = useState({
@@ -26,10 +30,16 @@ const Bugs = () => {
         {bugsData.bugs.map((bug) => {
           return (
             <div className="listItem">
-              <img alt={bug.name["name-USen"]} src={bug.icon_uri} />
-              <p>{bug.name["name-USen"]}</p>
-              <p>Location: {bug.availability.location}</p>
-              <p>Rarity: {bug.availability.rarity}</p>
+              <div>
+                <img alt={bug.name["name-USen"]} src={bug.icon_uri} />
+                <p>{bug.name["name-USen"]}</p>
+                <p><AttachMoneyIcon /> {bug.price} </p>
+              </div>
+              <div>
+                <p><LocationOnIcon /> {bug.availability.location}</p>
+                <p><QueryBuilderIcon /> {bug.availability.time}</p>
+
+              </div>
             </div>
           );
         })}
