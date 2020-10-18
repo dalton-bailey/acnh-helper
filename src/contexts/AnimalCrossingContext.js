@@ -13,15 +13,15 @@ export const AnimalCrossingContextProvider = (props) => {
     const [villagers, setVillagers] = useState([])
 
     useEffect(() => {
-        const fetchData = async (side) => {
+        const fetchData = async (dataType) => {
             try {
-                const result = await axios.get(`https://acnhapi.com/v1a/${side}`)
+                const result = await axios.get(`https://acnhapi.com/v1a/${dataType}`)
 
                 const data = await result.data
                 
-                if (side === 'bugs') setBugs(data)
-                if (side === 'fish') setFishes(data)
-                if (side === 'villagers') setVillagers(data)
+                if (dataType === 'bugs') setBugs(data)
+                if (dataType === 'fish') setFishes(data)
+                if (dataType === 'villagers') setVillagers(data)
             }
             catch (error) {
                 console.log(error)
