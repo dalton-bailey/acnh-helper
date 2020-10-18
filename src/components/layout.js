@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -28,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  const [loginOpen, setLoginOpen] = useState(false)
+
+  const handleDialogToggle = () => {
+    setLoginOpen(!loginOpen)
+  }
 
   return (
     <div className={classes.root}>
@@ -59,7 +64,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Animal Crossing
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={handleDialogToggle} >Login</Button>
         </Toolbar>
       </AppBar>
     </div>

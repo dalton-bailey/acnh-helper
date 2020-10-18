@@ -8,22 +8,32 @@ import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext"
 const Fish = () => {
     const fishesData = useAnmialCrossingContext()
 
+    const allFish = fishesData.fishes.map((fish) => {
+        return {
+            id: fish.id,
+            img: fish.icon_uri,
+            name: fish.name["name-USen"],
+            time: fish.availability.time === "" ? "All Day" : fish.availability.time,
+            location: fish.availability.location
+        }
+
+    })
 
     return (
         <div className="fish">
             <h1>{fishesData.fishes.length} Fish</h1>
             <div className="list">
-                {fishesData.fishes.map((fish) => {
+                {allFish.map((fish) => {
                     return (
                         <div key={fish.id} className="listItem">
                         <div>
-                            <img alt="" src={fish.icon_uri}/>
-                            <p>{fish.name["name-USen"]}</p>
+                            <img alt="" src={fish.img}/>
+                            <p>{fish.name}</p>
                             <p><AttachMoneyIcon />{fish.price}</p>
                         </div>
                         <div>
-                        <p><LocationOnIcon />{fish.availability.location}</p>
-                        <p><QueryBuilderIcon /> {fish.availability.time}</p>
+                        <p><LocationOnIcon />{fish.location}</p>
+                        <p><QueryBuilderIcon /> {fish.time} </p>
 
                         </div>
                         </div>

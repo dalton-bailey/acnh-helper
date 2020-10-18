@@ -22,6 +22,8 @@ export const AnimalCrossingContextProvider = (props) => {
                 if (dataType === 'bugs') setBugs(data)
                 if (dataType === 'fish') setFishes(data)
                 if (dataType === 'villagers') setVillagers(data)
+
+                console.log(result.data)
             }
             catch (error) {
                 console.log(error)
