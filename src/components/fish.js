@@ -9,8 +9,6 @@ const Fish = () => {
         fishes: [],
     });
 
-
-
     useEffect(() => {
         const fetchFishes = () => {
             axios.get("https://acnhapi.com/v1a/fish").then(function (response) {
@@ -29,7 +27,7 @@ const Fish = () => {
             <div className="list">
                 {fishesData.fishes.map((fish) => {
                     return (
-                        <div className="listItem">
+                        <div key={fish.id} className="listItem">
                         <div>
                             <img alt="" src={fish.icon_uri}/>
                             <p>{fish.name["name-USen"]}</p>

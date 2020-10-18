@@ -2,11 +2,11 @@ import React from "react";
 import { Route, Switch } from 'react-router-dom'
 import "./App.css";
 // import VillagersList from "./villagersList";
-import Villagers from "./components/villagers";
-import Bugs from "./components/bugs";
-import Fish from "./components/fish";
-import ButtonBarApp from "./components/layout";
-import Welcome from "./components/home";
+import Villagers from "./components/Villagers";
+import Bugs from "./components/Bugs";
+import Fish from "./components/Fish";
+import ButtonBarApp from "./components/Layout";
+import Welcome from "./components/Home";
 
 function App() {
   return (

@@ -11,16 +11,15 @@ const Villagers = () => {
     villagers: [],
   });
 
-  const fetchVillagers = () => {
-    axios.get("https://acnhapi.com/v1a/villagers").then(function (response) {
-      console.log(response);
-      setVillagersData({
-        villagers: response.data,
-      });
-    });
-  };
-
   useEffect(() => {
+    const fetchVillagers = () => {
+      axios.get("https://acnhapi.com/v1a/villagers").then(function (response) {
+        console.log(response);
+        setVillagersData({
+          villagers: response.data,
+        });
+      });
+    };
     fetchVillagers();
   }, []);
 
@@ -30,7 +29,7 @@ const Villagers = () => {
       <div className="list">
         {villagersData.villagers.map((villager) => {
           return (
-            <div className="listItem">
+            <div key={villager.id} className="listItem">
               <div>
               <LazyLoad>
                 <img alt="" src={villager.icon_uri} />
