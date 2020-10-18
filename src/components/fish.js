@@ -1,25 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from "axios";
+import React from 'react';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
+import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext"
+
 
 const Fish = () => {
-    const[fishesData, setFishesData] = useState({
-        fishes: [],
-    });
+    const fishesData = useAnmialCrossingContext()
 
-    useEffect(() => {
-        const fetchFishes = () => {
-            axios.get("https://acnhapi.com/v1a/fish").then(function (response) {
-                console.log(response)
-                setFishesData({
-                    fishes: response.data
-                })
-            })
-        }
-        fetchFishes();
-    }, [])
 
     return (
         <div className="fish">

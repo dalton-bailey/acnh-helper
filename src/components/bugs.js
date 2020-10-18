@@ -1,39 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
+import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext"
 
 const Bugs = () => {
-  const [bugsData, setBugsData] = useState({
-    bugs: [],
-  });
+  const bugsData = useAnmialCrossingContext()
 
-  useEffect(() => {
-    const fetchBugs = () => {
-      axios.get("https://acnhapi.com/v1a/bugs").then(function (response) {
-        console.log(response);
-        setBugsData({
-          bugs: response.data,
-        });
-      });
-    };
-    fetchBugs();
-  }, []);
-
-// const Bugs = () => {
-//   const [data, setData] = useState('');
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const result = await axios('https://acnhapi.com/v1a/bugs');
-
-//       console.log(result);
-
-//       setData(result.data);
-//     };
-//     fetchData();
-//   }, []);
 
   return (
     <div className="bugs">

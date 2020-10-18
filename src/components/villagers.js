@@ -1,27 +1,14 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import LazyLoad from "react-lazyload";
 import CakeIcon from '@material-ui/icons/Cake';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import WcIcon from '@material-ui/icons/Wc';
 import PetsIcon from '@material-ui/icons/Pets';
+import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext"
+
 
 const Villagers = () => {
-  const [villagersData, setVillagersData] = useState({
-    villagers: [],
-  });
-
-  useEffect(() => {
-    const fetchVillagers = () => {
-      axios.get("https://acnhapi.com/v1a/villagers").then(function (response) {
-        console.log(response);
-        setVillagersData({
-          villagers: response.data,
-        });
-      });
-    };
-    fetchVillagers();
-  }, []);
+  const villagersData = useAnmialCrossingContext()
 
   return (
     <div className="villagers">
