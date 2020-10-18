@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom'
 import "./App.css";
-// import Menu from "./components/menu";
 // import VillagersList from "./villagersList";
 import Villagers from "./components/villagers";
 import Bugs from "./components/bugs";
