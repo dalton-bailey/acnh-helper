@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   AppBar,
   Toolbar,
@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 // import MenuIcon from "@material-ui/icons/Menu";
 import { NavLink } from "react-router-dom";
+import  Login  from "./Login"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,11 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-  const [loginOpen, setLoginOpen] = useState(false)
 
-  const handleDialogToggle = () => {
-    setLoginOpen(!loginOpen)
-  }
 
   return (
     <div className={classes.root}>
@@ -64,7 +61,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Animal Crossing
           </Typography>
-          <Button color="inherit" onClick={handleDialogToggle} >Login</Button>
+          <Login />
         </Toolbar>
       </AppBar>
     </div>
