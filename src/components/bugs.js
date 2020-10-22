@@ -19,7 +19,7 @@ const Bugs = () => {
                 <img alt={bug.name["name-USen"]} src={bug.icon_uri} />
                 <p>{bug.name["name-USen"]}</p>
                 <p>
-                  <AttachMoneyIcon /> {bug.price}{" "}
+                  <AttachMoneyIcon /> {bug.price}
                 </p>
               </div>
               <div>

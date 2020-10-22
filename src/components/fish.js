@@ -13,6 +13,7 @@ const Fish = () => {
             id: fish.id,
             img: fish.icon_uri,
             name: fish.name["name-USen"],
+            price: fish.price,
             time: fish.availability.time === "" ? "All Day" : fish.availability.time,
             location: fish.availability.location
         }
