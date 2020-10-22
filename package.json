@@ -16,7 +16,8 @@
     "react-lazy-load": "^3.1.13",
     "react-lazyload": "^3.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",
