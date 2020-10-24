@@ -6,13 +6,25 @@ import {
   DialogTitle,
   TextField,
   Button,
+  makeStyles
 } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { AuthContext } from "../contexts/AuthContext";
 import Hemisphere from "./Hemisphere";
 
+const useStyles = makeStyles((theme) => ({
+  navStyle: {
+    color: "#000",
+    textDecoration: "none",
+    '&:hover': {
+      color: "#000",
+    }
+  },
+}))
+
 const Login = () => {
+  const classes = useStyles()
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -44,11 +56,11 @@ const Login = () => {
   return (
     <div>
       {authContext.isAuth ? (
-        <Button color="inherit" onClick={handleAuth}>
+        <Button className={classes.navStyle} onClick={handleAuth}>
           Logout
         </Button>
       ) : (
-        <Button color="inherit" onClick={handleOpen}>
+        <Button className={classes.navStyle} onClick={handleOpen}>
           Signup
         </Button>
       )}
