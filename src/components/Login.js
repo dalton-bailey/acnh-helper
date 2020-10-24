@@ -136,7 +136,7 @@ const Login = () => {
                     type="submit"
                     disabled={Boolean(errors.email || errors.password)}
                   >
-                    Create
+                    Signup
                   </Button>
                 </DialogActions>
               </form>
