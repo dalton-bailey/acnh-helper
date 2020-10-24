@@ -10,7 +10,7 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { AuthContext } from "../contexts/AuthContext";
-import Hemisphere from './Hemisphere'
+import Hemisphere from "./Hemisphere";
 
 const Login = () => {
   const [open, setOpen] = useState(false);
@@ -26,20 +26,20 @@ const Login = () => {
   const authContext = useContext(AuthContext);
 
   const handleAuth = () => {
-    console.log(authContext.isAuth)
+    console.log(authContext.isAuth);
     if (authContext.isAuth) {
-      authContext.logout()
-      setOpen(false)
-      return
+      authContext.logout();
+      setOpen(false);
+      return;
     }
     if (!authContext.isAuth) {
       if (!open) {
-        setOpen(true)
-        return
+        setOpen(true);
+        return;
       }
-      setOpen(false)
+      setOpen(false);
     }
-  }
+  };
 
   return (
     <div>
@@ -73,8 +73,8 @@ const Login = () => {
             onSubmit={(values, { setErrors, setStatus, setSubmitting }) => {
               try {
                 authContext.login();
-                console.log(values.email, values.password);
-                handleClose()
+                console.log(values.email, values.password, values.name);
+                handleClose();
               } catch (err) {
                 console.log(err);
               }
@@ -117,9 +117,16 @@ const Login = () => {
                   error={Boolean(touched.password && errors.password)}
                   helperText={touched.password && errors.password}
                 />
-                <TextField margin="normal" id="name" label="Island Name" />
-                <Hemisphere/>
-
+                <TextField
+                  margin="normal"
+                  label="Island Name"
+                  id="name"
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                />
+                <Hemisphere />
                 <DialogActions>
                   <Button
                     onClick={handleClose}

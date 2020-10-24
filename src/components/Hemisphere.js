@@ -36,10 +36,10 @@ const Hemisphere = () => {
   return (
     <div>
       <FormControl className={classes.formControl}>
-        {/* <InputLabel id="select-hemisphere-label">Hemisphere</InputLabel> */}
+        <InputLabel id="select-hemisphere-label">Hemisphere</InputLabel>
         <Select
-          labelId="select-hemisphere-label"
-          id="select-hemisphere"
+          labelId="hemisphere-label"
+          id="hemisphere"
           open={open}
           label="Hemisphere"
           onClose={handleClose}

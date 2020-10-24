@@ -34,7 +34,7 @@ const Fish = () => {
                         </div>
                         <div>
                         <p><LocationOnIcon />{fish.location}</p>
-                        <p><QueryBuilderIcon /> {fish.time} </p>
+                        <p><QueryBuilderIcon />{fish.time} </p>
 
                         </div>
                         </div>
