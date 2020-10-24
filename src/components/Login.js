@@ -10,17 +10,7 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { AuthContext } from "../contexts/AuthContext";
-
-// const hemispheres = [
-//   {
-//     label: "Northern",
-//     value: 1,
-//   },
-//   {
-//     label: "Southern",
-//     value: 2,
-//   },
-// ];
+import Hemisphere from './Hemisphere'
 
 const Login = () => {
   const [open, setOpen] = useState(false);
@@ -50,12 +40,6 @@ const Login = () => {
       setOpen(false)
     }
   }
-
-  // const [hemisphere, setHemisphere] = useState("Northern");
-
-  // const handleHemisphere = (event) => {
-  //   setHemisphere(event.target.value);
-  // };
 
   return (
     <div>
@@ -134,20 +118,7 @@ const Login = () => {
                   helperText={touched.password && errors.password}
                 />
                 <TextField margin="normal" id="name" label="Island Name" />
-                {/* <TextField
-              id="select-hemisphere"
-              select
-              margin="dense"
-              label="Hemisphere"
-              value={values.hemisphere}
-              onChange={handleHemisphere}
-            >
-              {hemispheres.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </TextField> */}
+                <Hemisphere/>
 
                 <DialogActions>
                   <Button
