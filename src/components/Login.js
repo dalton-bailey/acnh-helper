@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Dialog,
   DialogActions,
@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { AuthContext } from "../contexts/AuthContext";
 
 // const hemispheres = [
 //   {
@@ -32,6 +33,24 @@ const Login = () => {
     setOpen(false);
   };
 
+  const authContext = useContext(AuthContext);
+
+  const handleAuth = () => {
+    console.log(authContext.isAuth)
+    if (authContext.isAuth) {
+      authContext.logout()
+      setOpen(false)
+      return
+    }
+    if (!authContext.isAuth) {
+      if (!open) {
+        setOpen(true)
+        return
+      }
+      setOpen(false)
+    }
+  }
+
   // const [hemisphere, setHemisphere] = useState("Northern");
 
   // const handleHemisphere = (event) => {
@@ -40,9 +59,15 @@ const Login = () => {
 
   return (
     <div>
-      <Button color="inherit" onClick={handleOpen}>
-        Signup
-      </Button>
+      {authContext.isAuth ? (
+        <Button color="inherit" onClick={handleAuth}>
+          Logout
+        </Button>
+      ) : (
+        <Button color="inherit" onClick={handleOpen}>
+          Signup
+        </Button>
+      )}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -63,7 +88,9 @@ const Login = () => {
             })}
             onSubmit={(values, { setErrors, setStatus, setSubmitting }) => {
               try {
+                authContext.login();
                 console.log(values.email, values.password);
+                handleClose()
               } catch (err) {
                 console.log(err);
               }
