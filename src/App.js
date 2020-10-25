@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
-import Villagers from "./components/Villagers";
+// import Villagers from "./components/Villagers";
 import Bugs from "./components/Bugs";
 import Fish from "./components/Fish";
 import ButtonBarApp from "./components/Layout";
@@ -20,7 +20,7 @@ function App() {
             <Switch>
               <Route path="/fish" component={Fish} />
               <Route path="/bugs" component={Bugs} />
-              <Route path="/villagers" component={Villagers} />
+              {/* <Route path="/villagers" component={Villagers} /> */}
               <Route path="/" exact component={Welcome} />
             </Switch>
 
