@@ -34,8 +34,6 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
 
-
-
   title: {
     marginTop: 15,
     marginBottom: 15,
@@ -50,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function Layout() {
   const classes = useStyles();
 
   return (
