@@ -1,7 +1,7 @@
 ## App Features
 
-A React App with Animal Crossing villagers from all game versions.
+A React App with Animal Crossing villagers, fish and bugs.
 
-Each villager element show a picture, name, birthday, and sign.
+Each villager has a picture, name, catchphrase, saying, gender, species, birthday and personality.
 
-Buttons will display all villagers of a certain species. Click again to hide them.
+Each fish and bug has a picture, name, selling price, where and when to find them. 
