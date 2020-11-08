@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
       color: "#000",
     }
   },
+
 }))
 
 const Login = () => {
@@ -85,7 +86,7 @@ const Login = () => {
             onSubmit={(values, { setErrors, setStatus, setSubmitting }) => {
               try {
                 authContext.login();
-                console.log(values.email, values.password, values.name);
+                console.log(values.email, values.password, values.name, values.hemisphere);
                 handleClose();
               } catch (err) {
                 console.log(err);
@@ -139,6 +140,7 @@ const Login = () => {
                   value={values.name}
                 />
                 <Hemisphere />
+              
                 <DialogActions>
                   <Button
                     onClick={handleClose}
