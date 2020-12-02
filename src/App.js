@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Villagers from "./components/Villagers";
+import SearchPage from "./components/SearchPage";
 import Bugs from "./components/Bugs";
 import Fish from "./components/Fish";
 import Layout from "./components/Layout";
@@ -17,6 +18,7 @@ function App() {
           <Route path='/fish' component={Fish} />
           <Route path='/bugs' component={Bugs} />
           <Route path='/villagers' component={Villagers} />
+          {/* <Route path='/villagers' component={SearchPage} /> */}
           <Route path='/' exact component={Welcome} />
         </Switch>
       </div>

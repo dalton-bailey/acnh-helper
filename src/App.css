@@ -19,9 +19,7 @@
 
 .listItem {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width:400px;
+  flex-direction: column;
   border: 1px solid grey;
   margin: 10px;
   border-radius: 25px;
@@ -29,13 +27,43 @@
   box-shadow: 1px 1px 20px -10px rgba(158,158,158,1);;
 }
 
+.listItemContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 300px;
+}
+
+
 .listItem p {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.listItem img {
+.listItemHeader {
+  display: flex;
+  align-items: center;
+}
+
+.listItemHeader img {
+  margin-left: 10px;
+}
+
+.listItemHeader p {
+  margin-left: 5px;
+}
+
+.listItemHeader img {
+  height: 40px;
+}
+
+.listItemContent img {
+  height: 100px;
+}
+
+.listItemContentFish img, .listItemContentBugs img {
   height: 50px;
 }
 
@@ -55,8 +83,8 @@
 }
 
 .saying {
-  font-size: 12px;
-  max-width: 150px;
+  font-size: 10px;
+  max-width: 100px;
 }
 
 .App-logo {
