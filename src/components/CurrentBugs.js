@@ -4,10 +4,15 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 
-const Bugs = () => {
+const CurrentBugs = () => {
   const bugsData = useAnmialCrossingContext();
 
-  const allBugs = bugsData.bugs.map((bug) => {
+  let month = new Date().getMonth();
+  let hour = new Date().getHours()
+
+  const currentBugsData = bugsData.bugs.filter(bug => bug.availability["month-array-northern"].includes(month) && bug.availability["time-array"].includes(hour))
+
+  const currentBugs = currentBugsData.map((bug) => {
     return {
       id: bug.id,
       img: bug.icon_uri,
@@ -16,13 +21,13 @@ const Bugs = () => {
       time: bug.availability.time === "" ? "All Day" : bug.availability.time,
       location: bug.availability.location,
     };
-  });
+  })
 
   return (
     <div className="bugs">      
-      <h1> {bugsData.bugs.length} Bugs</h1>
+    <h1> {currentBugs.length} Bugs Availible Now</h1>
       <div className="list">
-        {allBugs.map((bug) => {
+        {currentBugs.map((bug) => {
           return (
             <div key={bug.id} className="listItem">
               <div  className="listItemContentBugs listItemContent">
@@ -45,10 +50,9 @@ const Bugs = () => {
             </div>
           );
         })}
-      </div>
-      
+      </div>      
     </div>
   );
 };
 
-export default Bugs;
+export default CurrentBugs;

@@ -5,10 +5,8 @@
 }
 
 .fish, .bugs, .villagers {
-  width: 86%;
   display: flex;
   flex-direction: column;
-  margin-left: 250px;
 }
 
 .list {

@@ -5,10 +5,19 @@ import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import ExtensionIcon from "@material-ui/icons/Extension";
 import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 
-const Fish = () => {
+const CurrentFish = () => {
   const fishesData = useAnmialCrossingContext();
 
-  const allFish = fishesData.fishes.map((fish) => {
+  let month = new Date().getMonth();
+  let hour = new Date().getHours()
+
+  console.log(hour)
+
+  const currentFishData = fishesData.fishes.filter((fish) =>
+    fish.availability["month-array-northern"].includes(month) && fish.availability["time-array"].includes(hour)
+  );
+
+  const currentFish = currentFishData.map((fish) => {
     return {
       id: fish.id,
       img: fish.icon_uri,
@@ -23,9 +32,9 @@ const Fish = () => {
 
   return (
     <div className="fish">
-      <h1>{fishesData.fishes.length} Fish</h1>
+      <p>Fish Availible Now</p>
       <div className="list">
-        {allFish.map((fish) => {
+        {currentFish.map((fish) => {
           return (
             <div key={fish.id} className="listItem">
               <div className="listItemContentFish listItemContent">
@@ -42,10 +51,12 @@ const Fish = () => {
                     <LocationOnIcon /> <p>{fish.location}</p>
                   </div>
                   <div className="attribute">
-                    <QueryBuilderIcon /> <p>{fish.time} </p>
+                    <QueryBuilderIcon />
+                    <p>{fish.time} </p>
                   </div>
                   <div className="attribute">
-                    <ExtensionIcon /> <p>{fish.shadow}</p>
+                    <ExtensionIcon />
+                    <p>{fish.shadow} </p>
                   </div>
                 </div>
               </div>
@@ -57,4 +68,4 @@ const Fish = () => {
   );
 };
 
-export default Fish;
+export default CurrentFish;

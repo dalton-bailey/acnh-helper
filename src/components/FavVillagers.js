@@ -6,20 +6,39 @@ import WcIcon from "@material-ui/icons/Wc";
 import PetsIcon from "@material-ui/icons/Pets";
 import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 
-const Villagers = () => {
+const Villagers = () => {  
   const villagersData = useAnmialCrossingContext();
+
+  const [myFavVillagers, setMyFavVillagers] = useState([]);
+
+  useEffect(() => {
+    if (villagersData.villagers.length > 0) {
+      const temp = [];
+      const daisy = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Daisy"
+      );
+      const goldie = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Goldie"
+      );
+      const nan = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Nan"
+      );
+      const stitches = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Stitches"
+      );
+      temp.push(daisy);
+      temp.push(goldie);
+      temp.push(nan);
+      temp.push(stitches);
+      setMyFavVillagers(temp);
+    }
+  }, [villagersData]);
 
   return (
     <div className="villagers">
-      <h1>Villagers</h1>
-
-      <div>
-        <label>Search for Villager:</label>
-        <input label="search for villager" type="search" />
-      </div>
-
+      <h1>My Favorite Villagers</h1>
       <div className="list">
-        {villagersData.villagers.map((villager) => {
+        {myFavVillagers.map((villager) => {
           return (
             <div key={villager.id} className="listItem">
               <div className="listItemHeader">
@@ -59,6 +78,7 @@ const Villagers = () => {
           );
         })}
       </div>
+
     </div>
   );
 };
