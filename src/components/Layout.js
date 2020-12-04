@@ -13,39 +13,18 @@ import {
 import { NavLink } from "react-router-dom";
 import Login from "./Login";
 
-const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    justifyContent: "space-around"
   },
 
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
+  nav: {
+    display: "flex",
+    
+  }
 
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-
-  drawerPaper: {
-    width: drawerWidth,
-  },
-
-  title: {
-    marginTop: 15,
-    marginBottom: 15,
-    marginLeft: 15,
-    textAlign: "left",
-  },
-
-  navStyle: {
-    color: "#000",
-    textDecoration: "none",
-    textTransform: "uppercase",
-  },
 }));
 
 export default function Layout() {
@@ -53,49 +32,75 @@ export default function Layout() {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}></AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <Typography variant="h6" className={classes.title}>
-          Animal Crossing
-        </Typography>
-        <Divider />
-        <List>
-          <ListItem>
-            <Button>
-              <NavLink to="/fish" className={classes.navStyle}>
-                Fish
-              </NavLink>
-            </Button>
-          </ListItem>
-          <ListItem>
-            <Button>
-              <NavLink to="/bugs" className={classes.navStyle}>
-                Bugs
-              </NavLink>
-            </Button>
-          </ListItem>
-          <ListItem>
-            <Button>
-              <NavLink to="/villagers" className={classes.navStyle}>
-                Villagers
-              </NavLink>
-            </Button>
-          </ListItem>
-
-          <Divider />
-          <ListItem>
-            <Login />
-          </ListItem>
-        </List>
-      </Drawer>
+      <h2>Animal Crossing</h2>
+      <List className={classes.nav}>
+        <ListItem>
+          <Button>
+            <NavLink to="/fish">Fish</NavLink>
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button>
+            <NavLink to="/bugs">Bugs</NavLink>
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button>
+            <NavLink to="/villagers">Villagers</NavLink>
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Login />
+        </ListItem>
+      </List>
     </div>
   );
+
+  // return (
+  //   <div className={classes.root}>
+  //     <CssBaseline />
+  //     <AppBar position="fixed" className={classes.appBar}></AppBar>
+  //     <Drawer
+  //       className={classes.drawer}
+  //       variant="permanent"
+  //       classes={{
+  //         paper: classes.drawerPaper,
+  //       }}
+  //       anchor="left"
+  //     >
+  //       <Typography variant="h6" className={classes.title}>
+  //         Animal Crossing
+  //       </Typography>
+  //       <Divider />
+  //       <List>
+  //         <ListItem>
+  //           <Button>
+  //             <NavLink to="/fish" className={classes.navStyle}>
+  //               Fish
+  //             </NavLink>
+  //           </Button>
+  //         </ListItem>
+  //         <ListItem>
+  //           <Button>
+  //             <NavLink to="/bugs" className={classes.navStyle}>
+  //               Bugs
+  //             </NavLink>
+  //           </Button>
+  //         </ListItem>
+  //         <ListItem>
+  //           <Button>
+  //             <NavLink to="/villagers" className={classes.navStyle}>
+  //               Villagers
+  //             </NavLink>
+  //           </Button>
+  //         </ListItem>
+
+  //         <Divider />
+  //         <ListItem>
+  //           <Login />
+  //         </ListItem>
+  //       </List>
+  //     </Drawer>
+  //   </div>
+  // );
 }

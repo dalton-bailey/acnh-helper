@@ -32,7 +32,7 @@ const CurrentFish = () => {
 
   return (
     <div className="fish">
-      <p>Fish Availible Now</p>
+      <h1>{currentFish.length} Fish Availible Now</h1>
       <div className="list">
         {currentFish.map((fish) => {
           return (
