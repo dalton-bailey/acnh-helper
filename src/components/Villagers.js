@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LazyLoad from "react-lazyload";
 import CakeIcon from "@material-ui/icons/Cake";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -11,7 +11,7 @@ const Villagers = () => {
 
   return (
     <div className="villagers">
-      <h1>Villagers</h1>
+      <h1>All Villagers</h1>
 
       <div>
         <label>Search for Villager:</label>
