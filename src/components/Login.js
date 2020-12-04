@@ -14,12 +14,26 @@ import { AuthContext } from "../contexts/AuthContext";
 import Hemisphere from "./Hemisphere";
 
 const useStyles = makeStyles((theme) => ({
-  navStyle: {
+  // navStyle: {
+  //   color: "#000",
+  //   fontSize: 16,
+  //   textDecoration: "none",
+  //   '&:hover': {
+  //     color: "#000",
+  //   }
+  // },
+
+  button: {
     color: "#000",
-    textDecoration: "none",
-    '&:hover': {
-      color: "#000",
-    }
+    paddingLeft: 40,
+    paddingRight: 40,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 10,
+    fontSize: 16,
+    "&:hover": {
+      color: "#000"
+    },
   },
 
 }))
@@ -57,11 +71,11 @@ const Login = () => {
   return (
     <div>
       {authContext.isAuth ? (
-        <Button className={classes.navStyle} onClick={handleAuth}>
+        <Button className={classes.button} onClick={handleAuth}>
           Logout
         </Button>
       ) : (
-        <Button className={classes.navStyle} onClick={handleOpen}>
+        <Button className={classes.button} onClick={handleOpen}>
           Signup
         </Button>
       )}

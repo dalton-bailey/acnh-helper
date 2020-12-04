@@ -11,14 +11,17 @@ const Villagers = () => {
 
   const [myFavVillagers, setMyFavVillagers] = useState([]);
 
+  const favVillagers = ["Daisy", "Buck", "Nan", "Stitches"]
+
   useEffect(() => {
     if (villagersData.villagers.length > 0) {
       const temp = [];
+
       const daisy = villagersData.villagers.find(
         (villager) => villager.name["name-USen"] === "Daisy"
       );
-      const goldie = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Goldie"
+      const buck = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Buck"
       );
       const nan = villagersData.villagers.find(
         (villager) => villager.name["name-USen"] === "Nan"
@@ -26,17 +29,43 @@ const Villagers = () => {
       const stitches = villagersData.villagers.find(
         (villager) => villager.name["name-USen"] === "Stitches"
       );
+      const chevre = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Chevre"
+      );
+      const graham = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Graham"
+      )
+      const croque = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Croque"
+      )
+      const agnes = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Agnes"
+      )
+      const tank = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Tank"
+      )
+      const claudia = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Claudia"
+      )
+
+      temp.push(croque)
       temp.push(daisy);
-      temp.push(goldie);
+      temp.push(buck);
       temp.push(nan);
       temp.push(stitches);
+      temp.push(chevre);
+      temp.push(graham)
+      temp.push(agnes)
+      temp.push(tank)
+      temp.push(claudia)
+
       setMyFavVillagers(temp);
     }
   }, [villagersData]);
 
   return (
     <div className="villagers">
-      <h1>My Favorite Villagers</h1>
+      <h1>My Villagers</h1>
       <div className="list">
         {myFavVillagers.map((villager) => {
           return (

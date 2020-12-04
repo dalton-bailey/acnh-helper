@@ -2,11 +2,16 @@
   text-align: center;
   display:flex;
   flex-direction: column;
+  background-color: #26292c;
+  color: white;
 }
 
 .fish, .bugs, .villagers {
   display: flex;
   flex-direction: column;
+  background-color: #26292c;
+  color: white;
+  margin: -24px;
 }
 
 .list {
@@ -18,11 +23,13 @@
 .listItem {
   display: flex;
   flex-direction: column;
-  border: 1px solid grey;
-  margin: 10px;
+  /* border: 1px solid #1a1c25; */
+  margin: 20px;
   border-radius: 25px;
   padding: 10px;
-  box-shadow: 1px 1px 20px -10px rgba(158,158,158,1);;
+  /* box-shadow: 1px 1px 20px -10px rgba(158,158,158,1); */
+  background-color: #1a1c25;
+  color: white;
 }
 
 .listItemContent {
@@ -109,6 +116,10 @@ button:hover {
 
 button:active {
   border: none;
+}
+
+.PrivateTabIndicator-colorSecondary-10 {
+  background-color: #66d2bb;
 }
 
 

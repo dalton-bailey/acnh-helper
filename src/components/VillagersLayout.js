@@ -8,6 +8,15 @@ import Box from "@material-ui/core/Box";
 import Villagers from "./Villagers";
 import FavVillagers from "./FavVillagers";
 
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+
+}));
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -41,13 +50,6 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
-
 export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -58,15 +60,14 @@ export default function SimpleTabs() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>
         <Tabs
           value={value}
           onChange={handleChange}
           aria-label="simple tabs example"
         >
-          <Tab label="My Favorite Villagers " {...a11yProps(0)} />
-          <Tab label="Villagers" {...a11yProps(1)} />
-          {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
+          <Tab label="My Villagers " {...a11yProps(0)} />
+          <Tab label="All Villagers" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -75,11 +76,8 @@ export default function SimpleTabs() {
       <TabPanel value={value} index={1}>
         <Villagers />
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-      <NavLink to="/villagers" className={classes.navStyle}></NavLink>{" "}
-      </TabPanel> */}
     </div>
-  );
+  ); 
 }
 
 
