@@ -3,7 +3,8 @@ import { makeStyles } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import { FaFish } from "react-icons/fa";
 import { IoIosBug } from "react-icons/io";
-import {FaPaw} from 'react-icons/fa';
+import { FaPaw } from 'react-icons/fa';
+import { GiSadCrab } from 'react-icons/gi';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +33,7 @@ const Welcome = () => {
             <p>Villagers</p>
           </NavLink>
           <NavLink to="/seacreatures" className="menuItem">
+            <GiSadCrab className="icon"/>
             <p>Sea Creatures</p>
           </NavLink>
         </div>

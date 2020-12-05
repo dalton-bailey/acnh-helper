@@ -1,7 +1,7 @@
 import React from "react";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
+import SpeedIcon from '@material-ui/icons/Speed';
 import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 
 const CurrentCreatures = () => {
@@ -19,7 +19,7 @@ const CurrentCreatures = () => {
       name: creature.name["name-USen"],
       price: creature.price,
       time: creature.availability.time === "" ? "All Day" : creature.availability.time,
-      location: creature.availability.location,
+      speed: creature.speed,
     };
   })
 
@@ -40,7 +40,7 @@ const CurrentCreatures = () => {
                 </div>
                 <div className="attributes">
                   <div className="attribute">
-                    <LocationOnIcon /> <p>{creature.location}</p>
+                     <SpeedIcon /> <p>{creature.speed}</p>
                   </div>
                   <div className="attribute">
                     <QueryBuilderIcon /> <p>{creature.time}</p>
