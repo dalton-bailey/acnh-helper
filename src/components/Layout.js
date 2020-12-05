@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   buttonText: {
-    color: "#000",
+    color: "#fff",
     textDecoration: "none",
   }
 }));
@@ -33,7 +33,9 @@ export default function Layout() {
 
   return (
     <div className={classes.root}>
+      <NavLink to="/" className={classes.buttonText}>
       <h2>Animal Crossing</h2>
+      </NavLink>
       <List className={classes.nav}>
         <ListItem>
           <Button className={classes.button}>

@@ -24,16 +24,13 @@ const useStyles = makeStyles((theme) => ({
   // },
 
   button: {
-    color: "#000",
+    color: "#fff",
     paddingLeft: 40,
     paddingRight: 40,
     paddingTop: 10,
     paddingBottom: 10,
     borderRadius: 10,
     fontSize: 16,
-    "&:hover": {
-      color: "#000"
-    },
   },
 
 }))

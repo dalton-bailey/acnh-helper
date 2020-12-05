@@ -6,6 +6,7 @@ import WcIcon from "@material-ui/icons/Wc";
 import PetsIcon from "@material-ui/icons/Pets";
 import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 
+
 const Villagers = () => {  
   const villagersData = useAnmialCrossingContext();
 

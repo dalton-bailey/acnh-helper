@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import Bugs from "./Bugs";
 import CurrentBugs from "./CurrentBugs";
+import ScrollArrow from "./Scroll";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -19,11 +20,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 }
@@ -58,26 +55,20 @@ export default function SimpleTabs() {
 
   return (
     <div className={classes.root}>
+      <ScrollArrow />
+
       <AppBar position="static">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-        >
+        <Tabs value={value} onChange={handleChange} centered>
           <Tab label="Current Bugs" {...a11yProps(0)} />
           <Tab label="All Bugs" {...a11yProps(1)} />
-          {/* <Tab label="Item Three" {...a11yProps(2)} /> */}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-          <CurrentBugs />
+        <CurrentBugs />
       </TabPanel>
       <TabPanel value={value} index={1}>
-          <Bugs />
+        <Bugs />
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-      <NavLink to="/villagers" className={classes.navStyle}></NavLink>{" "}
-      </TabPanel> */}
     </div>
   );
 }

@@ -2,14 +2,14 @@
   text-align: center;
   display:flex;
   flex-direction: column;
-  background-color: #26292c;
+  background-color: #120f18;
   color: white;
 }
 
 .fish, .bugs, .villagers {
   display: flex;
   flex-direction: column;
-  background-color: #26292c;
+  background-color: #120f18;
   color: white;
   margin: -24px;
 }
@@ -27,8 +27,14 @@
   margin: 20px;
   border-radius: 25px;
   padding: 10px;
-  /* box-shadow: 1px 1px 20px -10px rgba(158,158,158,1); */
-  background-color: #1a1c25;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
+  background-color: #1f1d29;
   color: white;
 }
 
@@ -92,31 +98,70 @@
   max-width: 100px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* home menu buttons */
+
+.homeMenu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
-button {
-  padding: 10px;
-  margin: 10px;
-  width: 100px;
-  background-color: white;
-  border:1px solid black;
-  text-decoration: none;
-  border-radius: 10px;
-  cursor: pointer;
-  outline: none;
-}
-
-button:hover {
-  background-color: black;
+.menuItem {
+  width: 150px;
+  height: 150px;
+  background-color: #1f1d29;
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 18px;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
-button:active {
-  border: none;
+.icon {
+  font-size: 60px;
 }
+
+/* scroll to top */
+
+.scrollTop {
+  position: fixed; 
+  width: 100%;
+  bottom: 20px;
+  align-items: center;
+  height: 40px;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s;
+  transition: opacity 0.4s;
+  opacity: 0.5;
+}
+
+.scrollTop:hover{
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
 
 
 

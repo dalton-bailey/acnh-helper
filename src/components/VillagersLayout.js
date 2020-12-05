@@ -7,14 +7,13 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 import Villagers from "./Villagers";
 import FavVillagers from "./FavVillagers";
-
+import ScrollArrow from "./Scroll";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
-
 }));
 
 function TabPanel(props) {
@@ -28,11 +27,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 }
@@ -60,12 +55,10 @@ export default function SimpleTabs() {
 
   return (
     <div className={classes.root}>
+      <ScrollArrow />
+
       <AppBar position="static" className={classes.appBar}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="simple tabs example"
-        >
+        <Tabs value={value} onChange={handleChange} centered>
           <Tab label="My Villagers " {...a11yProps(0)} />
           <Tab label="All Villagers" {...a11yProps(1)} />
         </Tabs>
@@ -77,7 +70,5 @@ export default function SimpleTabs() {
         <Villagers />
       </TabPanel>
     </div>
-  ); 
+  );
 }
-
-
