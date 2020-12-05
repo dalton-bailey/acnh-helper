@@ -12,8 +12,6 @@ const Villagers = () => {
 
   const [myFavVillagers, setMyFavVillagers] = useState([]);
 
-  const favVillagers = ["Daisy", "Buck", "Nan", "Stitches"]
-
   useEffect(() => {
     if (villagersData.villagers.length > 0) {
       const temp = [];

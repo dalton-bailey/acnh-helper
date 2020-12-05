@@ -5,16 +5,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
-import Villagers from "./Villagers";
-import FavVillagers from "./VillagersFav";
+import Seas from "./Seas";
+import CurrentSeas from "./SeasCurrent";
 import ScrollArrow from "./Scroll";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,6 +38,13 @@ function a11yProps(index) {
   };
 }
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
 export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -57,17 +57,17 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <ScrollArrow />
 
-      <AppBar position="static" className={classes.appBar}>
+      <AppBar position="static">
         <Tabs value={value} onChange={handleChange} centered>
-          <Tab label="My Villagers " {...a11yProps(0)} />
-          <Tab label="All Villagers" {...a11yProps(1)} />
+          <Tab label="Current Seas" {...a11yProps(0)} />
+          <Tab label="All Seas" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <FavVillagers />
+        <CurrentSeas />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Villagers />
+        <Seas />
       </TabPanel>
     </div>
   );
