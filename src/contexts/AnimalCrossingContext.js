@@ -5,14 +5,14 @@ const AnimalCrossingContext = createContext({
     bus: [],
     fish: [],
     villagers: [],
-    sea: [],
+    creatures: [],
 })
 
 export const AnimalCrossingContextProvider = (props) => {
     const [bugs, setBugs] = useState([])
     const [fishes, setFishes] = useState([])
     const [villagers, setVillagers] = useState([])
-    const [sea, setSea] = useState([])
+    const [creatures, setCreatures] = useState([])
 
     useEffect(() => {
         const fetchData = async (dataType) => {
@@ -24,7 +24,7 @@ export const AnimalCrossingContextProvider = (props) => {
                 if (dataType === 'bugs') setBugs(data)
                 if (dataType === 'fish') setFishes(data)
                 if (dataType === 'villagers') setVillagers(data)
-                if (dataType === 'sea') setSea(data)
+                if (dataType === 'sea') setCreatures(data)
 
                 console.log(result.data)
             }
@@ -42,7 +42,7 @@ export const AnimalCrossingContextProvider = (props) => {
 
     return (
         <AnimalCrossingContext.Provider value={
-            {bugs, fishes, villagers, sea}
+            {bugs, fishes, villagers, creatures}
         }>
             {props.children}
         </AnimalCrossingContext.Provider>

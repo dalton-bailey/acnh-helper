@@ -6,7 +6,7 @@
   color: white;
 }
 
-.fish, .bugs, .villagers {
+.fish, .bugs, .villagers, .creatures {
   display: flex;
   flex-direction: column;
   background-color: #120f18;

@@ -49,6 +49,11 @@ export default function Layout() {
         </ListItem>
         <ListItem>
           <Button className={classes.button}>
+            <NavLink to="/seacreatures" className={classes.buttonText}>Sea Creatures</NavLink>
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button className={classes.button}>
             <NavLink to="/villagers" className={classes.buttonText}>Villagers</NavLink>
           </Button>
         </ListItem>

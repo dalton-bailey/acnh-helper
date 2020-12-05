@@ -31,6 +31,9 @@ const Welcome = () => {
             <FaPaw className="icon"/>
             <p>Villagers</p>
           </NavLink>
+          <NavLink to="/seacreatures" className="menuItem">
+            <p>Sea Creatures</p>
+          </NavLink>
         </div>
     </div>
   );

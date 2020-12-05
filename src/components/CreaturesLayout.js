@@ -5,8 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
-import Seas from "./Seas";
-import CurrentSeas from "./SeasCurrent";
+import Creatures from "./Creatures";
+import CurrentCreatures from "./CreaturesCurrent";
 import ScrollArrow from "./Scroll";
 
 function TabPanel(props) {
@@ -59,15 +59,15 @@ export default function SimpleTabs() {
 
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} centered>
-          <Tab label="Current Seas" {...a11yProps(0)} />
-          <Tab label="All Seas" {...a11yProps(1)} />
+          <Tab label="Current Sea Creatures" {...a11yProps(0)} />
+          <Tab label="All Sea Creatures" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <CurrentSeas />
+        <CurrentCreatures />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Seas />
+        <Creatures />
       </TabPanel>
     </div>
   );
