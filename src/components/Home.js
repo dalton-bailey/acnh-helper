@@ -8,13 +8,14 @@ import { GiSadCrab } from 'react-icons/gi';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: 1000,
+    // height: 100,
+    padding: 50,
     textAlign: "left",
   },
 
 }));
 
-const Welcome = () => {
+const Home = () => {
   const classes = useStyles();
 
   return (
@@ -28,17 +29,18 @@ const Welcome = () => {
             <IoIosBug className="icon"/>
             <p>Bugs</p>
           </NavLink>
-          <NavLink to="/villagers" className="menuItem">
-            <FaPaw className="icon"/>
-            <p>Villagers</p>
-          </NavLink>
           <NavLink to="/seacreatures" className="menuItem">
             <GiSadCrab className="icon"/>
             <p>Sea Creatures</p>
           </NavLink>
+          <NavLink to="/villagers" className="menuItem">
+            <FaPaw className="icon"/>
+            <p>Villagers</p>
+          </NavLink>
+          
         </div>
     </div>
   );
 };
 
-export default Welcome;
+export default Home;

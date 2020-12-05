@@ -4,6 +4,7 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 
+
 const Bugs = () => {
   const bugsData = useAnmialCrossingContext();
 
@@ -46,8 +47,8 @@ const Bugs = () => {
           );
         })}
       </div>
-      
     </div>
+    
   );
 };
 
