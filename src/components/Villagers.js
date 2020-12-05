@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     backgroundColor: "black",
-    width: 300,
+    width: 340,
     padding: 8,
     borderRadius: 10,
   },
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     color: "white",
     backgroundColor: "black",
     border: "none",
-    width: 300,
+    width: 340,
     padding: 8,
   },
 });
