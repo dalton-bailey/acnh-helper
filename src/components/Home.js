@@ -9,7 +9,7 @@ import { GiSadCrab } from 'react-icons/gi';
 const useStyles = makeStyles((theme) => ({
   root: {
     // height: 100,
-    padding: 50,
+    padding: 30,
     textAlign: "left",
   },
 
