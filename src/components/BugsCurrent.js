@@ -7,8 +7,10 @@ import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 const CurrentBugs = () => {
   const bugsData = useAnmialCrossingContext();
 
-  let month = new Date().getMonth();
+  let month = new Date().getMonth() + 1;
   let hour = new Date().getHours()
+
+  console.log(month, hour)
 
   const currentBugsData = bugsData.bugs.filter(bug => bug.availability["month-array-northern"].includes(month) && bug.availability["time-array"].includes(hour))
 

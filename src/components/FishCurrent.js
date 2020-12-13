@@ -9,7 +9,7 @@ import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 const CurrentFish = () => {
   const fishesData = useAnmialCrossingContext();
 
-  let month = new Date().getMonth();
+  let month = new Date().getMonth() + 1;
   let hour = new Date().getHours()
 
   console.log(hour)

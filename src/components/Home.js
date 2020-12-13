@@ -5,6 +5,9 @@ import { FaFish } from "react-icons/fa";
 import { IoIosBug } from "react-icons/io";
 import { FaPaw } from 'react-icons/fa';
 import { GiSadCrab } from 'react-icons/gi';
+import { BsFillPersonPlusFill } from 'react-icons/bs'
+import Login from "./Login";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,20 +26,24 @@ const Home = () => {
         <div className="homeMenu">
           <NavLink to="/fish" className="menuItem">
             <FaFish className="icon"/>
-            <p>Fish</p>
+            <p>FISH</p>
           </NavLink>
           <NavLink to="/bugs" className="menuItem">
             <IoIosBug className="icon"/>
-            <p>Bugs</p>
+            <p>BUGS</p>
           </NavLink>
           <NavLink to="/seacreatures" className="menuItem">
             <GiSadCrab className="icon"/>
-            <p>Sea Creatures</p>
+            <p>SEA CREATURES</p>
           </NavLink>
           <NavLink to="/villagers" className="menuItem">
             <FaPaw className="icon"/>
-            <p>Villagers</p>
+            <p>VILLAGERS</p>
           </NavLink>
+          <div className="menuItem signUp">   
+          <BsFillPersonPlusFill className="icon"/>       
+          <Login />
+          </div>
           
         </div>
     </div>

@@ -7,7 +7,7 @@ import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 const CurrentCreatures = () => {
   const creaturesData = useAnmialCrossingContext();
 
-  let month = new Date().getMonth();
+  let month = new Date().getMonth() + 1;
   let hour = new Date().getHours()
 
   const currentCreaturesData = creaturesData.creatures.filter(creature => creature.availability["month-array-northern"].includes(month) && creature.availability["time-array"].includes(hour))

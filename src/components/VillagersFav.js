@@ -37,8 +37,8 @@ const Villagers = () => {
       const croque = villagersData.villagers.find(
         (villager) => villager.name["name-USen"] === "Croque"
       )
-      const agnes = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Agnes"
+      const carmen = villagersData.villagers.find(
+        (villager) => villager.name["name-USen"] === "Carmen"
       )
       const tank = villagersData.villagers.find(
         (villager) => villager.name["name-USen"] === "Tank"
@@ -54,7 +54,7 @@ const Villagers = () => {
       temp.push(stitches);
       temp.push(chevre);
       temp.push(graham)
-      temp.push(agnes)
+      temp.push(carmen)
       temp.push(tank)
       temp.push(claudia)
 

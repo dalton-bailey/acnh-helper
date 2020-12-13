@@ -37,7 +37,7 @@ export default function Layout() {
       <h2>Animal Crossing</h2>
       </NavLink>
       <List className={classes.nav}>
-        <ListItem>
+        {/* <ListItem>
           <Button className={classes.button}>
             <NavLink to="/fish" className={classes.buttonText}>Fish</NavLink>
           </Button>
@@ -56,7 +56,7 @@ export default function Layout() {
           <Button className={classes.button}>
             <NavLink to="/villagers" className={classes.buttonText}>Villagers</NavLink>
           </Button>
-        </ListItem>
+        </ListItem> */}
         <ListItem>
           <Login />
         </ListItem>
