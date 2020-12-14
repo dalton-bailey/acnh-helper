@@ -37,8 +37,6 @@ const Villagers = () => {
   const [searchValue, setSearchValue] = React.useState("");
   const classes = useStyles();
 
-  // this.handleChange = this.handleChange.bind(this)
-
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
@@ -55,7 +53,9 @@ const Villagers = () => {
         villager["birthday-string"]
           .toLowerCase()
           .includes(searchValue.toLowerCase()) ||
-        villager.species.toLowerCase().includes(searchValue.toLowerCase())
+        villager.species
+        .toLowerCase()
+        .includes(searchValue.toLowerCase())
       );
     })
 

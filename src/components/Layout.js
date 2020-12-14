@@ -1,82 +1,67 @@
-import React, { useState, useContext } from 'react'
-import {
-  AppBar,
-  Toolbar,
-  makeStyles,
-  Button,
-} from '@material-ui/core'
-import { NavLink } from 'react-router-dom'
-
-import Login from '../components/Login'
+import React from "react";
+import { Button, makeStyles, List, ListItem } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
+import Login from "./Login";
 import { AuthContext } from '../contexts/AuthContext'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-around",
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  dem: {
-    color: 'blue',
-  },
-  repub: {
-    color: 'red',
-  },
-  navSpacing: {
-    marginRight: '5rem',
-    color: '#fff',
-    textDecoration: 'none',
-  },
-  list: {
-    width: 250,
-    backgroundColor: '#00f'
-  },
-}))
 
-export default function ButtonAppBar() {
-  const classes = useStyles()
-  const [loginOpen, setLoginOpen] = useState(false)
+  nav: {
+    display: "flex",
+  },
 
-  const authContext = useContext(AuthContext)
+  button: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 10,
+    fontSize: 16,
 
+  },
 
-  const handleAuth = () => {
-    if (authContext.isAuthenticated) {
-      authContext.logout()
-      setLoginOpen(false)
-      return
-    }
-    if (!authContext.isAuthenticated) {
-      if (!loginOpen) {
-        setLoginOpen(true)
-        return
-      }
-      setLoginOpen(false)
-    }
+  buttonText: {
+    color: "#fff",
+    textDecoration: "none",
   }
+}));
+
+export default function Layout() {
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position='static'>
-        <Toolbar>
-          <NavLink to='/fish' className={classes.navSpacing}>
-            Fish
-          </NavLink>
-          <NavLink to='/bugs' className={classes.navSpacing}>
-            Bugs
-          </NavLink>
-          {
-            authContext.isAuthenticated ? <Button color='inherit' onClick={handleAuth}>Logout</Button> :
-            <Button color='inherit' onClick={handleAuth}>Login</Button>
-          }
-        </Toolbar>
-      </AppBar>
-      <Login open={loginOpen} onClose={handleAuth}/>
+      <NavLink to="/" className={classes.buttonText}>
+      <h2>Animal Crossing</h2>
+      </NavLink>
+      <List className={classes.nav}>
+        {/* <ListItem>
+          <Button className={classes.button}>
+            <NavLink to="/fish" className={classes.buttonText}>Fish</NavLink>
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button className={classes.button}>
+            <NavLink to="/bugs" className={classes.buttonText}>Bugs</NavLink>
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button className={classes.button}>
+            <NavLink to="/seacreatures" className={classes.buttonText}>Sea Creatures</NavLink>
+          </Button>
+        </ListItem>
+        <ListItem>
+          <Button className={classes.button}>
+            <NavLink to="/villagers" className={classes.buttonText}>Villagers</NavLink>
+          </Button>
+        </ListItem> */}
+        <ListItem>
+          <Login />
+        </ListItem>
+      </List>
     </div>
-  )
+  );
 }
-

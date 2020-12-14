@@ -1,6 +1,4 @@
-// import React, { useState, useContext } from "react";
 import React from "react"
-// import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import { FaFish } from "react-icons/fa";
@@ -9,7 +7,6 @@ import { FaPaw } from 'react-icons/fa';
 import { GiSadCrab } from 'react-icons/gi';
 import { BsFillPersonFill } from 'react-icons/bs'
 import Login from "./Login";
-// import { AuthContext } from '../contexts/AuthContext'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,27 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles()
-
-  // export default function ButtonAppBar() {
-  //   const classes = useStyles()
-  //   const [loginOpen, setLoginOpen] = useState(false)
-
-  //   const authContext = useContext(AuthContext)
-
-  //   const handleAuth = () => {
-  //     if (authContext.isAuthenticated) {
-  //       authContext.logout()
-  //       setLoginOpen(false)
-  //       return
-  //     }
-  //     if (!authContext.isAuthenticated) {
-  //       if (!loginOpen) {
-  //         setLoginOpen(true)
-  //         return
-  //       }
-  //       setLoginOpen(false)
-  //     }
-  //   }
 
   return (
     <div className={classes.root}>

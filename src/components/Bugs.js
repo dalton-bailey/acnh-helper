@@ -30,8 +30,6 @@ const useStyles = makeStyles({
   },
 });
 
-
-
 const Bugs = () => {
   const bugsData = useAnmialCrossingContext();
   const [searchValue, setSearchValue] = React.useState("");
@@ -49,10 +47,7 @@ const Bugs = () => {
       .includes(searchValue.toLowerCase()) ||
       bug.availability.location
       .toLowerCase()
-      .includes(searchValue.toLowerCase()) ||
-      bug.availability.time === "" ? "All Day" : bug.availability.time
-      .toLowerCase()
-      .includes(searchValue.toLowerCase())
+      .includes(searchValue.toLowerCase()) 
     )
   })
 

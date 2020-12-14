@@ -48,10 +48,7 @@ const Fish = () => {
       .includes(searchValue.toLowerCase()) ||
       fish.availability.location
       .toLowerCase()
-      .includes(searchValue.toLowerCase()) ||
-      fish.availability.time === "" ? "All Day" : fish.availability.time
-      .toLowerCase()
-      .includes(searchValue.toLowerCase())
+      .includes(searchValue.toLowerCase()) 
     )
   })
 
