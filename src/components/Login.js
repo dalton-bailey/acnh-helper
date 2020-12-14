@@ -172,8 +172,8 @@
 
 // export default Login;
 
-import React, { useState, useContext } from "react";
-import { Dialog, DialogActions, DialogContent, DialogTitle, Box, TextField, Button, makeStyles } from "@material-ui/core";
+import React, { useContext } from "react";
+import { Dialog,  Box, TextField, Button, makeStyles } from "@material-ui/core";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { AuthContext } from "../contexts/AuthContext";

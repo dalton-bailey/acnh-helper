@@ -70,14 +70,9 @@ import React, { useState, useContext } from 'react'
 import {
   AppBar,
   Toolbar,
-  IconButton,
   makeStyles,
-  Drawer,
-  List,
-  ListItem,
   Button,
 } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
 import { NavLink } from 'react-router-dom'
 
 import Login from '../components/Login'
