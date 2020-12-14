@@ -53,7 +53,7 @@ Similarly, Map is used in Bugs.js, Fish.js, Creatures.js and Villagers.js and th
     });
 ```
 
-Find is used in the [a relative link](VillagersFav.js) component to create an array of the Villagers currently living on my island.
+Find is used in the [VillagersFav.js](src/components/VillagersFav.js) component to create an array of the Villagers currently living on my island.
 
 ```
       const daisy = villagersData.villagers.find(
