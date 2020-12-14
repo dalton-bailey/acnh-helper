@@ -1,6 +1,6 @@
 Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists.
 
-Use of Filter can be found in componenets Bugs.js, Fish.js, Creatures.js and Villagers.js as part of the search functionality.
+Use of Filter can be found in componenets [Bugs.js](src/components/Bugs.js), [Fish.js](src/components/Fish.js), [Creatures.js](src/components/Creatures.js) and [Villagers.js](src/components/Villagers.js) as part of the search functionality.
 
 ```
   const showVillagers = villagersData.villagers
@@ -22,7 +22,7 @@ Use of Filter can be found in componenets Bugs.js, Fish.js, Creatures.js and Vil
     })
 ```
 
-Similarly, Map is used in Bugs.js, Fish.js, Creatures.js and Villagers.js and their associated Current.js to render lists.
+Similarly, Map is used in [Bugs.js](src/components/Bugs.js), [Fish.js](src/components/Fish.js), [Creatures.js](src/components/Creatures.js) and [Villagers.js](src/components/Villagers.js) and their associated Current.js to render lists.
 
 ```  .map((creature) => {
       return (
