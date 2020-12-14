@@ -2,6 +2,7 @@ Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map,
 
 Use of Filter can be found in componenets Bugs.js, Fish.js, Creatures.js and Villagers.js to search.
 
+```
   const showVillagers = villagersData.villagers
     .filter((villager) => {
       return (
@@ -19,6 +20,7 @@ Use of Filter can be found in componenets Bugs.js, Fish.js, Creatures.js and Vil
         .includes(searchValue.toLowerCase())
       );
     })
+```
 
 Encapsulate your code as React functional components.
 Work with command-line tools and NPM to create and manage your project within a real development toolset.
