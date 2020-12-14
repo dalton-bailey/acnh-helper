@@ -1,12 +1,13 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
+import React, { useState, useContext } from "react";
+import { makeStyles, Button } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import { FaFish } from "react-icons/fa";
 import { IoIosBug } from "react-icons/io";
 import { FaPaw } from 'react-icons/fa';
 import { GiSadCrab } from 'react-icons/gi';
-import { BsFillPersonPlusFill } from 'react-icons/bs'
+import { BsFillPersonFill } from 'react-icons/bs'
 import Login from "./Login";
+import { AuthContext } from '../contexts/AuthContext'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,8 +19,38 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Home = () => {
-  const classes = useStyles();
+export default function ButtonAppBar() {
+  const classes = useStyles()
+  // const [drawerOpen, setDrawerOpen] = useState(false)
+  const [loginOpen, setLoginOpen] = useState(false)
+
+  const authContext = useContext(AuthContext)
+
+  // const handleDrawerToggle = () => {
+  //   setDrawerOpen(!drawerOpen)
+  // }
+
+  /*   const handleDialogToggle = () => {
+    setLoginOpen(!loginOpen)
+  } */
+
+  const handleAuth = () => {
+    if (authContext.isAuthenticated) {
+      authContext.logout()
+      setLoginOpen(false)
+      return
+    }
+    if (!authContext.isAuthenticated) {
+      if (!loginOpen) {
+        setLoginOpen(true)
+        return
+      }
+      setLoginOpen(false)
+    }
+  }
+
+  // const Home = () => {
+  //   const classes = useStyles();
 
   return (
     <div className={classes.root}>
@@ -40,14 +71,17 @@ const Home = () => {
             <FaPaw className="icon"/>
             <p>VILLAGERS</p>
           </NavLink>
-          <div className="menuItem signUp">   
-          <BsFillPersonPlusFill className="icon"/>       
-          <Login />
-          </div>
-          
+          <div className="menuItem">
+          <BsFillPersonFill className="icon"/>       
+            {
+              authContext.isAuthenticated ? <Button color='inherit' onClick={handleAuth}>Logout</Button> :
+              <Button color='inherit' onClick={handleAuth}>Login</Button>
+            }
+            </div>
         </div>
+        <Login open={loginOpen} onClose={handleAuth}/>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+// export default Home;

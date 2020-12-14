@@ -113,7 +113,6 @@ const Villagers = () => {
             value={searchValue}
           />
         </div>
-
         <div className="list">{showVillagers}</div>
       </div>
     </div>
