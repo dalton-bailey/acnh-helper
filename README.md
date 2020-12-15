@@ -90,14 +90,14 @@ Find is used in the [VillagersFav.js](src/components/VillagersFav.js) component 
 
 <h2>2. Encapsulate your code as React functional components. </h2>
 
-Componenets are encapsualted as function components and can be found in [Components](src/components) folder.
+Components are encapsualted as function components and can be found in [Components](src/components) folder.
 
 <h2> 3. Work with command-line tools and NPM to create and manage your project within a real development toolset. </h2>
 
 
 <h2> 4. Allow communication between components using props and the Context API. </h2>
 
-[Components](src/context/AnimalCrossingContext.js)
+[Contexts](src/contexts/AnimalCrossingContext.js)
 
 <h2> 5. Present a form for user input that provides useful form validation and feedback. </h2>
 
@@ -105,11 +105,11 @@ Componenets are encapsualted as function components and can be found in [Compone
 
 <h2> 6. Create at least 5 custom components and use it within at least two of your other components. </h2>
 
-[Bugs Layout](src/components/BugsLayout.js)
-[Bugs Current](src/components/BugsCurrent.js)
-[Bugs](src/components/Bugs.js)
-[Scroll](src/components/Scroll.js)
-[Villagers Fav](src/components/VillagersFave.js)
+[Bugs Layout](src/components/BugsLayout.js) <br/>
+[Bugs Current](src/components/BugsCurrent.js) <br/>
+[Bugs](src/components/Bugs.js) <br/>
+[Scroll](src/components/Scroll.js) <br/>
+[Villagers Fav](src/components/VillagersFave.js) <br/>
 
 <h2> 7. Use a mix of CSS animations and Transition Component transitions to enhance some aspects of your project. </h2>
 
@@ -208,8 +208,8 @@ function App() {
 
 <h2> 10. Manage your application's state using Hooks and the Context API. </h2>
 
-[AnimalCrossingContext](src/components/AnimalCrossingContext.js)
-[AuthContext](src/components/AuthContext.js)
+[AnimalCrossingContext](src/contexts/AnimalCrossingContext.js)
+[AuthContext](src/contexts/AuthContext.js)
 
 
 <h2> 11. Structure, document, and deploy your final project code according to common industry practices. </h2>
