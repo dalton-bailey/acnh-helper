@@ -109,7 +109,7 @@ Components are encapsualted as function components and can be found in [Componen
 [Bugs Current](src/components/BugsCurrent.js) <br/>
 [Bugs](src/components/Bugs.js) <br/>
 [Scroll](src/components/Scroll.js) <br/>
-[Villagers Fav](src/components/VillagersFave.js) <br/>
+[Villagers Fav](src/components/VillagersFav.js) <br/>
 
 <h2> 7. Use a mix of CSS animations and Transition Component transitions to enhance some aspects of your project. </h2>
 
@@ -152,7 +152,7 @@ CSS for the Scroll animation
 
 Connected to the Animal Crossing New Horizons API http://acnhapi.com/
 
-[AnimalCrossingContext](src/components/AnimalCrossingContext.js)
+[AnimalCrossingContext](src/contexts/AnimalCrossingContext.js)
 
 ```
     useEffect(() => {
@@ -186,7 +186,7 @@ Connected to the Animal Crossing New Horizons API http://acnhapi.com/
 
 React Router is used to route between bugs, fish, creatures and villagers, 
 
-[App](src/components/App.js)
+[App](src/App.js)
 
 ```
 function App() {
@@ -208,10 +208,10 @@ function App() {
 
 <h2> 10. Manage your application's state using Hooks and the Context API. </h2>
 
-[AnimalCrossingContext](src/contexts/AnimalCrossingContext.js)
+[AnimalCrossingContext](src/contexts/AnimalCrossingContext.js) <br/>
 [AuthContext](src/contexts/AuthContext.js)
 
 
 <h2> 11. Structure, document, and deploy your final project code according to common industry practices. </h2>
 
-Deploying to Neflify https://dgm3790-baileydalton.netlify.app/
+Deploying to Netlify https://dgm3790-baileydalton.netlify.app/
