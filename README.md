@@ -1,4 +1,4 @@
-Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists.
+<h2> 1. Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists. </h2>
 
 Use of Filter can be found in componenets [Bugs.js](src/components/Bugs.js), [Fish.js](src/components/Fish.js), [Creatures.js](src/components/Creatures.js) and [Villagers.js](src/components/Villagers.js) as part of the search functionality.
 
@@ -88,32 +88,30 @@ Find is used in the [VillagersFav.js](src/components/VillagersFav.js) component 
       )
 ```
 
-Encapsulate your code as React functional components.
+<h2>2. Encapsulate your code as React functional components. </h2>
 
 Componenets are encapsualted as function components and can be found in [Components](src/components) folder.
 
-Work with command-line tools and NPM to create and manage your project within a real development toolset.
+<h2> 3. Work with command-line tools and NPM to create and manage your project within a real development toolset. </h2>
 
 
-
-Allow communication between components using props and the Context API.
+<h2> 4. Allow communication between components using props and the Context API. </h2>
 
 [Components](src/context/AnimalCrossingContext.js)
 
-Present a form for user input that provides useful form validation and feedback.
+<h2> 5. Present a form for user input that provides useful form validation and feedback. </h2>
 
 [Form](src/components/Login.js)
 
-Create at least 5 custom components and use it within at least two of your other components.
-
-Bugs, fish, creatures and villagers are all created using 3 components each. A component for all bugs, fish, creatures and villagers, a component for current bigs, fish, creates/fav villagers, and a layout component that structures the two. 
+<h2> 6. Create at least 5 custom components and use it within at least two of your other components. </h2>
 
 [Bugs Layout](src/components/BugsLayout.js)
-[Fish Layout](src/components/FishLayout.js)
-[Creatures Layout](src/components/CreaturesLayout.js)
-[VillagersLayout](src/components/VillagersLayout.js)
+[Bugs Current](src/components/BugsCurrent.js)
+[Bugs](src/components/Bugs.js)
+[Scroll](src/components/Scroll.js)
+[Villagers Fav](src/components/VillagersFave.js)
 
-Use a mix of CSS animations and Transition Component transitions to enhance some aspects of your project.
+<h2> 7. Use a mix of CSS animations and Transition Component transitions to enhance some aspects of your project. </h2>
 
 A small fadeIn animation on the [Scroll](src/components/Scroll.js) button when it appears at the bottom. 
 
@@ -150,7 +148,7 @@ CSS for the Scroll animation
 }
 ```
 
-Connect to a server using HTTP and display retrieved data.
+<h2> 8. Connect to a server using HTTP and display retrieved data. </h2>
 
 Connected to the Animal Crossing New Horizons API http://acnhapi.com/
 
@@ -184,7 +182,7 @@ Connected to the Animal Crossing New Horizons API http://acnhapi.com/
     }, [])
 ```
 
-Provide at least 3 different routes with navigation between them using React Router.
+<h2> 9. Provide at least 3 different routes with navigation between them using React Router. </h2>
 
 React Router is used to route between bugs, fish, creatures and villagers, 
 
@@ -208,12 +206,12 @@ function App() {
 }
 ```
 
-Manage your application's state using Hooks and the Context API.
+<h2> 10. Manage your application's state using Hooks and the Context API. </h2>
 
 [AnimalCrossingContext](src/components/AnimalCrossingContext.js)
 [AuthContext](src/components/AuthContext.js)
 
 
-Structure, document, and deploy your final project code according to common industry practices.
+<h2> 11. Structure, document, and deploy your final project code according to common industry practices. </h2>
 
 Deploying to Neflify https://dgm3790-baileydalton.netlify.app/
