@@ -5,6 +5,7 @@ import { FaFish } from "react-icons/fa";
 import { IoIosBug } from "react-icons/io";
 import { FaPaw } from 'react-icons/fa';
 import { GiSadCrab } from 'react-icons/gi';
+import {GiDinosaurBones} from 'react-icons/gi'
 import { BsFillPersonFill } from 'react-icons/bs'
 import Login from "./Login";
 
@@ -34,6 +35,10 @@ const Home = () => {
       <NavLink to="/seacreatures" className="menuItem">
         <GiSadCrab className="icon"/>
         <p>SEA CREATURES</p>
+      </NavLink>
+      <NavLink to="/fossils" className="menuItem">
+        <GiDinosaurBones className="icon"/>
+        <p>FOSSILS</p>
       </NavLink>
       <NavLink to="/villagers" className="menuItem">
         <FaPaw className="icon"/>

@@ -26,7 +26,7 @@ export const AnimalCrossingContextProvider = (props) => {
                 if (dataType === 'villagers') setVillagers(data)
                 if (dataType === 'sea') setCreatures(data)
 
-                console.log(result.data)
+                // console.log(result.data)
             }
             catch (error) {
                 console.log(error)
@@ -37,6 +37,7 @@ export const AnimalCrossingContextProvider = (props) => {
         fetchData('fish')
         fetchData('villagers')
         fetchData('sea')
+        fetchData('fossils')
         
     }, [])
 

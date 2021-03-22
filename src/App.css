@@ -9,7 +9,7 @@ body {
   color: white;
 }
 
-.fish, .bugs, .villagers, .creatures {
+.fish, .bugs, .villagers, .creatures, .fossils {
   display: flex;
   flex-direction: column;
   background-color: #120f18;
@@ -79,6 +79,29 @@ body {
 
 .listItemContentFish img, .listItemContentBugs img {
   height: 50px;
+}
+
+.listItemContentFossils {
+  display: flex;
+  flex-direction: column;
+}
+
+.btnList {
+  align-self: flex-end;
+}
+
+.btn {
+  background: none;
+  color: white;
+  border: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.fossil {
+  align-self: center;
 }
 
 .attributes {
