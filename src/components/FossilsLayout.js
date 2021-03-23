@@ -14,7 +14,6 @@ import {
   DialogActions,
   Button,
   IconButton,
-  Box,
 } from "@material-ui/core";
 import axios from "axios";
 import { Formik } from "formik";
