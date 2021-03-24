@@ -90,7 +90,7 @@ body {
   align-self: flex-end;
 }
 
-.btn {
+.MuiSvgIcon-root  {
   background: none;
   color: white;
   border: none;

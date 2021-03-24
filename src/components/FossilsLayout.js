@@ -50,6 +50,21 @@ const Fossils = () => {
   const [searchValue, setSearchValue] = React.useState("");
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
+  const [addOpen, setAddOpen] = useState(false);
+
+  const handleChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const fetchFossils = async () => {
+    try {
+      const fossils = await axios.get(`http://localhost:5050/fossil`);
+      setFossilsData(fossils.data);
+      console.log(fossils.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const handleDelete = async () => {
     setDeleteOpen(false);
@@ -64,15 +79,6 @@ const Fossils = () => {
     } catch (err) {
       console.error(err);
     }
-  };
-
-  const handleClickEditOpen = (fossil) => {
-    setSelectedFossil(fossil.fossil);
-    setEditOpen(true);
-  };
-
-  const handleCloseEdit = () => {
-    setEditOpen(false);
   };
 
   const handleUpdate = async (values) => {
@@ -93,6 +99,31 @@ const Fossils = () => {
     }
   };
 
+  const handleAdd = async (values) => {
+    console.log(values.name, values.image, values.price)
+    try {
+      const result = await axios.post(`http://localhost:5050/fossil`, {
+          name: values.name,
+          image: values.image,
+          price: values.price,
+      });
+      if (result.status === 200) {
+        fetchFossils()
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleClickEditOpen = (fossil) => {
+    setSelectedFossil(fossil.fossil);
+    setEditOpen(true);
+  };
+
+  const handleCloseEdit = () => {
+    setEditOpen(false);
+  };
+
   const handleClickDeleteOpen = (fossil) => {
     setSelectedFossil(fossil.fossil);
     setDeleteOpen(true);
@@ -102,18 +133,12 @@ const Fossils = () => {
     setDeleteOpen(false);
   };
 
-  const handleChange = (event) => {
-    setSearchValue(event.target.value);
+  const handleClickAddOpen = () => {
+    setAddOpen(true);
   };
 
-  const fetchFossils = async () => {
-    try {
-      const fossils = await axios.get(`http://localhost:5050/fossil`);
-      setFossilsData(fossils.data);
-      console.log(fossils.data);
-    } catch (err) {
-      console.error(err);
-    }
+  const handleCloseAdd = () => {
+    setAddOpen(false);
   };
 
   useEffect(() => {
@@ -170,7 +195,7 @@ const Fossils = () => {
           />
         </div>
       </div>
-      <IconButton>
+      <IconButton onClick={() => handleClickAddOpen()} >
         <AddIcon />
       </IconButton>
       <Dialog open={editOpen} onClose={handleCloseEdit}>
@@ -231,39 +256,35 @@ const Fossils = () => {
                   error={Boolean(touched.name && errors.name)}
                   helperText={touched.name && errors.name}
                 />
-                  <TextField
-                    autoFocus
-                    id="image"
-                    name="image"
-                    label="Image URL"
-                    type="text"
-                    fullWidth
-                    value={values.image}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={Boolean(touched.image && errors.image)}
-                    helperText={touched.image && errors.image}
-                  /> 
-                   <TextField
-                    autoFocus
-                    id="price"
-                    name="price"
-                    label="Price"
-                    fullWidth
-                    value={values.price}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={Boolean(touched.price && errors.price)}
-                    helperText={touched.price && errors.price}
-                  />
+                <TextField
+                  autoFocus
+                  id="image"
+                  name="image"
+                  label="Image URL"
+                  type="text"
+                  fullWidth
+                  value={values.image}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.image && errors.image)}
+                  helperText={touched.image && errors.image}
+                />
+                <TextField
+                  autoFocus
+                  id="price"
+                  name="price"
+                  label="Price"
+                  fullWidth
+                  value={values.price}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.price && errors.price)}
+                  helperText={touched.price && errors.price}
+                />
               </DialogContent>
               <DialogActions>
-                  <Button onClick={handleCloseEdit}>
-                      Cancel
-                  </Button>
-                  <Button type="submit">
-                      Save
-                  </Button>
+                <Button onClick={handleCloseEdit}>Cancel</Button>
+                <Button type="submit">Save</Button>
               </DialogActions>
             </form>
           )}
@@ -281,7 +302,93 @@ const Fossils = () => {
           <Button onClick={handleDelete}>Delete</Button>
         </DialogActions>
       </Dialog>
-
+      <Dialog open={addOpen} onClose={handleCloseAdd}>
+        <Formik
+          initialValues={{
+            name: 'New Fossil',
+            image: 'Fossil Image',
+            price: 1500,
+          }}
+          validationSchema={Yup.object().shape({
+            name: Yup.string("Enter fossil name.").required("Name is required"),
+            image: Yup.string("Image URL"),
+            price: Yup.number("Price"),
+          })}
+          onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+            try {
+              await handleAdd(values);
+              handleCloseAdd();
+            } catch (err) {
+              console.error(err);
+              setStatus({ success: false });
+              setErrors({ submit: err.message });
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <form
+              noValidate
+              autoComplete="off"
+              onSubmit={handleSubmit}
+              className={classes.dialogContent}
+            >
+              <DialogTitle>Add Fossil</DialogTitle>
+              <DialogContent>
+                <DialogContentText>Add a New Fossil</DialogContentText>
+                <TextField
+                  autoFocus
+                  id="name"
+                  name="name"
+                  label="Fossil Name"
+                  type="text"
+                  fullWidth
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.name && errors.name)}
+                  helperText={touched.name && errors.name}
+                />
+                <TextField
+                  id="image"
+                  name="image"
+                  label="Image URL"
+                  type="text"
+                  fullWidth
+                  value={values.image}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.image && errors.image)}
+                  helperText={touched.image && errors.image}
+                />
+                <TextField
+                  id="price"
+                  name="price"
+                  label="Price"
+                  fullWidth
+                  value={values.price}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.price && errors.price)}
+                  helperText={touched.price && errors.price}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleCloseAdd}>Cancel</Button>
+                <Button type="submit">Add</Button>
+              </DialogActions>
+            </form>
+          )}
+        </Formik>
+      </Dialog>
       <div className="list">{showFossils}</div>
     </div>
   );
