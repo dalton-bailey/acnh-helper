@@ -16,6 +16,7 @@ const DateTime = asNexusMethod(DateTimeResolver, 'date')
 const Query = objectType({
   name: 'Query',
   definition(t) {
+
     t.nonNull.list.nonNull.field('allHolidays', {
       type: 'Holiday',
       resolve: (_parent, _args, context) => {
@@ -23,12 +24,17 @@ const Query = objectType({
       },
     })
 
-    // t.nonNull.list.nonNull.field('allRegions', {
-    //   type: 'Region',
-    //   resolve: (_parent, _args, context) => {
-    //     return context.prisma.region.findMany()
-    //   }
-    // })
+    t.list.field('holidayByMonth', {
+      type: 'Holiday',
+      args: {
+        month: stringArg()
+      },
+      resolve: (_parent, args, context) => {
+        return context.prisma.holiday.findMany({
+          where: { month: args.month },
+        })
+      },
+    })
 
     t.nullable.field('holidayById', {
       type: 'Holiday',
@@ -41,6 +47,15 @@ const Query = objectType({
         })
       },
     })
+
+    
+
+    // t.nonNull.list.nonNull.field('allRegions', {
+    //   type: 'Region',
+    //   resolve: (_parent, _args, context) => {
+    //     return context.prisma.region.findMany()
+    //   }
+    // })
 
     // t.nonNull.list.nonNull.field('feed', {
     //   type: 'Post',
@@ -118,8 +133,9 @@ const Mutation = objectType({
           data: {
             name: args.data.name,
             date: args.data.date,
+            month: args.data.month,
             description: args.data.description,
-            region: args.data.region
+            region: args.data.region,
           },
         })
       },
@@ -209,41 +225,32 @@ const Holiday = objectType({
   definition(t) {
     t.nonNull.int('id')
     t.nonNull.string('name')
-    t.nonNull.string('date')
+    t.string('date')
+    t.nonNull.string('month')
     t.string('description')
     t.string('region')
-    // t.nonNull.list.nonNull.field('regions', {
-    //   type: 'Region',
-    //   resolve: (parent, _, context) => {
-    //     return context.prisma.holiday
-    //       .findUnique({
-    //         where: { id: parent.id || undefined },
-    //       })
-    //       .regions()
-    //   },
-    // })
   },
 })
 
-const Region = objectType({
-  name: 'Region',
-  definition(t) {
-    t.nonNull.int('id')
-    t.nonNull.field('createdAt', { type: 'DateTime' })
-    t.nonNull.field('updatedAt', { type: 'DateTime' })
-    t.nonNull.string('name')
-    // t.field('author', {
-    //   type: 'User',
-    //   resolve: (parent, _, context) => {
-    //     return context.prisma.region
-    //       .findUnique({
-    //         where: { id: parent.id || undefined },
-    //       })
-    //       .author()
-    //   },
-    // })
-  },
-})
+// const Region = objectType({
+//   name: 'Region',
+//   definition(t) {
+//     t.nonNull.int('id')
+//     t.nonNull.field('createdAt', { type: 'DateTime' })
+//     t.nonNull.field('updatedAt', { type: 'DateTime' })
+//     t.nonNull.string('name')
+//     // t.field('author', {
+//     //   type: 'User',
+//     //   resolve: (parent, _, context) => {
+//     //     return context.prisma.region
+//     //       .findUnique({
+//     //         where: { id: parent.id || undefined },
+//     //       })
+//     //       .author()
+//     //   },
+//     // })
+//   },
+// })
 
 // const SortOrder = enumType({
 //   name: 'SortOrder',
@@ -265,21 +272,22 @@ const Region = objectType({
 //   },
 // })
 
-const RegionCreateInput = inputObjectType({
-  name: 'RegionCreateInput',
-  definition(t) {
-    t.nonNull.string('title')
-    t.string('content')
-  },
-})
+// const RegionCreateInput = inputObjectType({
+//   name: 'RegionCreateInput',
+//   definition(t) {
+//     t.nonNull.string('title')
+//     t.string('content')
+//   },
+// })
 
 const HolidayCreateInput = inputObjectType({
   name: 'HolidayCreateInput',
   definition(t) {
     t.nonNull.string('name')
     t.string('date')
+    t.string('month')
     t.string('description')
-    t.list.nonNull.field('regions', { type: 'RegionCreateInput' })
+    t.string('region')
   },
 })
 
@@ -288,10 +296,10 @@ const schema = makeSchema({
     Query,
     Mutation,
     Holiday,
-    Region,
+    // Region,
     // UserUniqueInput,
     HolidayCreateInput,
-    RegionCreateInput,
+    // RegionCreateInput,
     // SortOrder,
     // PostOrderByUpdatedAtInput,
     DateTime,

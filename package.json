@@ -9,6 +9,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
+    "concurrently": "^6.0.2",
     "firebase": "^8.2.0",
     "formik": "^2.2.0",
     "react": "^16.13.1",
@@ -22,7 +23,12 @@
     "yup": "^0.29.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "postinstall": "cd graphql-server && npm install",
+    "launch": "cd graphql-server && npm run nuke && npm run launchDocker",
+    "migrate": "cd graphql-server && npm run migrate",
+    "seed": "cd graphql-server && npm run seed",
+    "start-dev": "cd graphql-server && npm run dev",
+    "start": "concurrently \"react-scripts start\" \"cd graphql-server && npm run dev\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
