@@ -19,7 +19,7 @@ type Holiday {
 input HolidayCreateInput {
   date: String
   description: String
-  month: String
+  month: String!
   name: String!
   region: String
 }
@@ -27,6 +27,7 @@ input HolidayCreateInput {
 type Mutation {
   createHoliday(data: HolidayCreateInput!): Holiday!
   deleteHoliday(id: Int!): Holiday
+  updateHoliday(data: HolidayCreateInput!, id: Int!): Holiday
 }
 
 type Query {

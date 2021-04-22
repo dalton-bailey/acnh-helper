@@ -189,22 +189,29 @@ const Mutation = objectType({
     //   },
     // })
 
-    // t.field('incrementPostViewCount', {
-    //   type: 'Post',
-    //   args: {
-    //     id: nonNull(intArg()),
-    //   },
-    //   resolve: (_, args, context) => {
-    //     return context.prisma.post.update({
-    //       where: { id: args.id || undefined },
-    //       data: {
-    //         viewCount: {
-    //           increment: 1,
-    //         },
-    //       },
-    //     })
-    //   },
-    // })
+    t.field('updateHoliday', {
+      type: 'Holiday',
+      args: {
+        id: nonNull(intArg()),
+        data: nonNull(
+          arg({
+            type: 'HolidayCreateInput'
+          })
+        )
+      },
+      resolve: (_, args, context) => {
+        return context.prisma.holiday.update({
+          where: { id: args.id || undefined },
+          data: {
+            name: args.data.name,
+            date: args.data.date,
+            month: args.data.month,
+            description: args.data.description,
+            region: args.data.region,
+          },
+        })
+      },
+    })
 
     t.field('deleteHoliday', {
       type: 'Holiday',
@@ -285,7 +292,7 @@ const HolidayCreateInput = inputObjectType({
   definition(t) {
     t.nonNull.string('name')
     t.string('date')
-    t.string('month')
+    t.nonNull.string('month')
     t.string('description')
     t.string('region')
   },

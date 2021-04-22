@@ -7,6 +7,7 @@ import FishLayout from "./components/FishLayout";
 import SeaLayout from "./components/CreaturesLayout";
 import Fossils from "./components/FossilsLayout";
 import MovieList from "./components/MovieList"
+// import Holidays from "./components/Holidays";
 import Home from "./components/Home";
 import { AnimalCrossingContextProvider } from "./contexts/AnimalCrossingContext";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/villagers' component={VillagersLayout} />
           <Route path='/fossils' component={Fossils}/>
           <Route path='/movies' component={MovieList} />
+          {/* <Route path='/holidays' component={Holidays} /> */}
         </Switch>
       </div>
     </AnimalCrossingContextProvider>

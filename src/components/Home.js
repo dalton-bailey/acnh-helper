@@ -44,6 +44,9 @@ const Home = () => {
         <FaPaw className="icon"/>
         <p>VILLAGERS</p>
       </NavLink>
+      <NavLink to="/holidays" className="menuItem">
+        <p>HOLIDAYS</p>
+      </NavLink>
       <div className="menuItem signUp">   
       <BsFillPersonFill className="icon"/>       
       <Login />
