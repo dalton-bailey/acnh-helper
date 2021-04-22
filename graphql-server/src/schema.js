@@ -206,8 +206,8 @@ const Mutation = objectType({
             name: args.data.name,
             date: args.data.date,
             month: args.data.month,
-            description: args.data.description,
             region: args.data.region,
+            description: args.data.description,
           },
         })
       },

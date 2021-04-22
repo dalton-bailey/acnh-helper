@@ -54,21 +54,21 @@ const ALL_HOLIDAYS = gql`
   }
 `
 
-// const UPDATE_HOLIDAY = gql`
-// mutation updateHoliday ($id: Int!, $name: String!, $date: String, $month: String, $region: String, $description: String) {
-//   updateHoliday (id: $id,
-//     data: {
-//     name: $name,
-//     date: $date,
-//     month: $month,
-//     region: $region,
-//     description: $description,
-//     }
-//   ) {
-//       id
-//   }
-// }
-// `
+const UPDATE_HOLIDAY = gql`
+mutation updateHoliday ($id: Int!, $name: String!, $date: String, $month: String!, $description: String, $region: String) {
+  updateHoliday (id: $id,
+    data: {
+    name: $name,
+    date: $date,
+    month: $month,
+    description: $description,
+    region: $region,
+    }
+  ) {
+      id
+  }
+}
+`
 
 const DELETE_HOLIDAY = gql`
 mutation deleteHoliday ($id: Int!) {
@@ -86,7 +86,7 @@ const HolidayList = () => {
 
 
     const { loading, error, data } = useQuery(ALL_HOLIDAYS)
-    // const [updateHoliday] = useMutation(UPDATE_HOLIDAY);
+    const [updateHoliday] = useMutation(UPDATE_HOLIDAY);
     const [deleteHoliday] = useMutation(DELETE_HOLIDAY)
 
     if (loading) {
@@ -124,18 +124,18 @@ const HolidayList = () => {
     setEditOpen(false);
   };
 
-    // const handleUpdate = async (values) => {
-    //     updateHoliday({
-    //       variables: {
-    //         id: selectedHoliday.id,
-    //         name: values.name,
-    //         date: values.date,
-    //         month: values.month,
-    //         region: values.region,
-    //         description: values.description
-    //       }
-    //     })
-    // }
+    const handleUpdate = async (values) => {
+        updateHoliday({
+          variables: {
+            id: selectedHoliday.id,
+            name: values.name,
+            date: values.date,
+            month: values.month,
+            region: values.region,
+            description: values.description
+          }
+        })
+    }
 
   const handleClickDeleteOpen = (holiday) => {
     setSelectedHoliday(holiday.holiday)
@@ -204,7 +204,7 @@ const HolidayList = () => {
           })}
           onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
             try {
-                // await handleUpdate(values)
+                await handleUpdate(values)
               handleCloseEdit();
             } catch (err) {
               console.error(err);
