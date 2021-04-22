@@ -1,3 +1,16 @@
+<h3>Graphql</h3>
+<h4>Animal Crossing Events & Holidays</h4>
+
+To deploy locally -> 
+1. Clone Repo
+2. Follow scripts in main package.json
+      postinstall
+      launch
+      migrate
+      seed
+      dev
+
+
 <h3> 1. Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists. </h3>
 
 Use of Filter can be found in componenets [Bugs.js](src/components/Bugs.js), [Fish.js](src/components/Fish.js), [Creatures.js](src/components/Creatures.js) and [Villagers.js](src/components/Villagers.js) as part of the search functionality.
