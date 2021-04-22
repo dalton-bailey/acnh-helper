@@ -13,19 +13,19 @@ To deploy locally
 
 <h4>Query Resolvers</h4>
 
-<h5>All Holidays</h5>
-```prisma
+```javascript
+    const Query = objectType({
+  name: 'Query',
+  definition(t) {
+
     t.nonNull.list.nonNull.field('allHolidays', {
       type: 'Holiday',
       resolve: (_parent, _args, context) => {
         return context.prisma.holiday.findMany()
       },
     })
-```
 
-<h5>Holidays By Month</h5>
-```
-t.list.field('holidayByMonth', {
+    t.list.field('holidayByMonth', {
       type: 'Holiday',
       args: {
         month: stringArg()
@@ -36,11 +36,8 @@ t.list.field('holidayByMonth', {
         })
       },
     })
-```
 
-<h5>Holiday By Id</h5>
-```
-t.nullable.field('holidayById', {
+    t.nullable.field('holidayById', {
       type: 'Holiday',
       args: {
         id: intArg(),
@@ -51,6 +48,8 @@ t.nullable.field('holidayById', {
         })
       },
     })
+  },
+})
 ```
 
 <h4>Mutation Resolvers</h4>
