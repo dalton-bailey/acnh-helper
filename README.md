@@ -1,19 +1,20 @@
 <h3>Graphql</h3>
 <h4>Animal Crossing Events & Holidays</h4>
 
-To deploy locally 
+To deploy locally
+
 1. Clone Repo
 2. Follow scripts in main package.json -><br>
-      postinstall<br>
-      launch<br>
-      migrate<br>
-      seed<br>
-      start -> will deploy frontend to localhost:300 and prisma playground to localhost:4000<br>
+   postinstall<br>
+   launch<br>
+   migrate<br>
+   seed<br>
+   start -> will deploy frontend to localhost:300 and prisma playground to localhost:4000<br>
 
 <h4>Query Resolvers</h4>
 
 <h5>All Holidays</h5>
-```text
+```
     t.nonNull.list.nonNull.field('allHolidays', {
       type: 'Holiday',
       resolve: (_parent, _args, context) => {
@@ -23,7 +24,7 @@ To deploy locally
 ```
 
 <h5>Holidays By Month</h5>
-```javascript
+```
 t.list.field('holidayByMonth', {
       type: 'Holiday',
       args: {
@@ -121,8 +122,6 @@ t.field('deleteHoliday', {
     })
 ```
 
-
-
 <h3> 1. Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists. </h3>
 
 Use of Filter can be found in componenets [Bugs.js](src/components/Bugs.js), [Fish.js](src/components/Fish.js), [Creatures.js](src/components/Creatures.js) and [Villagers.js](src/components/Villagers.js) as part of the search functionality.
@@ -149,7 +148,7 @@ Use of Filter can be found in componenets [Bugs.js](src/components/Bugs.js), [Fi
 
 Similarly, Map is used in [Bugs.js](src/components/Bugs.js), [Fish.js](src/components/Fish.js), [Creatures.js](src/components/Creatures.js) and [Villagers.js](src/components/Villagers.js) and their associated Current.js to render lists.
 
-```  .map((creature) => {
+```.map((creature) => {
       return (
         <div key={creature.id} className="listItem">
           <div className="listItemContentSeaCreatures listItemContent">
@@ -239,7 +238,7 @@ Created and managed with NPM.
 
 <h3> 7. Use a mix of CSS animations and Transition Component transitions to enhance some aspects of your project. </h3>
 
-A small fadeIn animation on the [Scroll](src/components/Scroll.js) button when it appears at the bottom. 
+A small fadeIn animation on the [Scroll](src/components/Scroll.js) button when it appears at the bottom.
 
 CSS for the Scroll animation
 
@@ -247,7 +246,7 @@ CSS for the Scroll animation
 /* scroll to top */
 
 .scrollTop {
-  position: fixed; 
+  position: fixed;
   width: 100%;
   bottom: 20px;
   align-items: center;
@@ -287,7 +286,7 @@ Connected to the Animal Crossing New Horizons API http://acnhapi.com/
                 const result = await axios.get(`https://acnhapi.com/v1a/${dataType}`)
 
                 const data = await result.data
-                
+
                 if (dataType === 'bugs') setBugs(data)
                 if (dataType === 'fish') setFishes(data)
                 if (dataType === 'villagers') setVillagers(data)
@@ -304,13 +303,13 @@ Connected to the Animal Crossing New Horizons API http://acnhapi.com/
         fetchData('fish')
         fetchData('villagers')
         fetchData('sea')
-        
+
     }, [])
 ```
 
 <h3> 9. Provide at least 3 different routes with navigation between them using React Router. </h3>
 
-React Router is used to route between bugs, fish, creatures and villagers, 
+React Router is used to route between bugs, fish, creatures and villagers,
 
 [App](src/App.js)
 
@@ -336,7 +335,6 @@ function App() {
 
 [AnimalCrossingContext](src/contexts/AnimalCrossingContext.js) <br/>
 [AuthContext](src/contexts/AuthContext.js)
-
 
 <h3> 11. Structure, document, and deploy your final project code according to common industry practices. </h3>
 
