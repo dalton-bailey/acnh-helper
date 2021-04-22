@@ -13,7 +13,7 @@ To deploy locally
 <h4>Query Resolvers</h4>
 
 <h5>All Holidays</h5>
-```javascript
+```text
     t.nonNull.list.nonNull.field('allHolidays', {
       type: 'Holiday',
       resolve: (_parent, _args, context) => {
