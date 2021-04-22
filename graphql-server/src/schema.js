@@ -141,54 +141,6 @@ const Mutation = objectType({
       },
     })
 
-    // t.field('createRegion', {
-    //   type: 'Region',
-    //   args: {
-    //     data: nonNull(
-    //       arg({
-    //         type: 'RegionCreateInput',
-    //       }),
-    //     ),
-    //     holidayName: nonNull(stringArg()),
-    //   },
-    //   resolve: (_, args, context) => {
-    //     return context.prisma.region.create({
-    //       data: {
-    //         name: args.data.title,
-    //         // holiday: {
-    //         //   connect: { holiday: args.holidayName },
-    //         // },
-    //       },
-    //     })
-    //   },
-    // })
-
-    // t.field('togglePublishPost', {
-    //   type: 'Post',
-    //   args: {
-    //     id: nonNull(intArg()),
-    //   },
-    //   resolve: async (_, args, context) => {
-    //     const post = await context.prisma.post.findUnique({
-    //       where: { id: args.id || undefined },
-    //       select: {
-    //         published: true,
-    //       },
-    //     })
-
-    //     if (!post) {
-    //       throw new Error(
-    //         `Post with ID ${args.id} does not exist in the database.`,
-    //       )
-    //     }
-
-    //     return context.prisma.post.update({
-    //       where: { id: args.id || undefined },
-    //       data: { published: !post.published },
-    //     })
-    //   },
-    // })
-
     t.field('updateHoliday', {
       type: 'Holiday',
       args: {

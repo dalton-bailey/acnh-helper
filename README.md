@@ -14,55 +14,61 @@ To deploy locally
 <h4>Query Resolvers</h4>
 
 ```javascript
-    const Query = objectType({
-  name: 'Query',
+const Query = objectType({
+  name: "Query",
   definition(t) {
-
-    t.nonNull.list.nonNull.field('allHolidays', {
-      type: 'Holiday',
+    // All Holidays
+    t.nonNull.list.nonNull.field("allHolidays", {
+      type: "Holiday",
       resolve: (_parent, _args, context) => {
-        return context.prisma.holiday.findMany()
+        return context.prisma.holiday.findMany();
       },
-    })
+    });
 
-    t.list.field('holidayByMonth', {
-      type: 'Holiday',
+    // Holidays by Month
+    t.list.field("holidayByMonth", {
+      type: "Holiday",
       args: {
-        month: stringArg()
+        month: stringArg(),
       },
       resolve: (_parent, args, context) => {
         return context.prisma.holiday.findMany({
           where: { month: args.month },
-        })
+        });
       },
-    })
+    });
 
-    t.nullable.field('holidayById', {
-      type: 'Holiday',
+    // Holiday by Id
+    t.nullable.field("holidayById", {
+      type: "Holiday",
       args: {
         id: intArg(),
       },
       resolve: (_parent, args, context) => {
         return context.prisma.holiday.findUnique({
           where: { id: args.id || undefined },
-        })
+        });
       },
-    })
+    });
   },
-})
+});
 ```
 
 <h4>Mutation Resolvers</h4>
 
-<h5>Create Holiday</h5>
-```
- t.nonNull.field('createHoliday', {
-      type: 'Holiday',
+```javascript
+const Mutation = objectType({
+  name: "Mutation",
+  definition(t) {
+
+    // Create Holiday
+    t.nonNull.field("createHoliday", {
+      type: "Holiday",
       args: {
         data: nonNull(
           arg({
-            type: 'HolidayCreateInput',
-          }),
+            type: "HolidayCreateInput",
+          })
         ),
       },
       resolve: (_, args, context) => {
@@ -74,22 +80,20 @@ To deploy locally
             description: args.data.description,
             region: args.data.region,
           },
-        })
+        });
       },
-    })
-```
+    });
 
-<h5>Update Holiday</h5>
-```
-t.field('updateHoliday', {
-      type: 'Holiday',
+    // Update Holiday
+    t.field("updateHoliday", {
+      type: "Holiday",
       args: {
         id: nonNull(intArg()),
         data: nonNull(
           arg({
-            type: 'HolidayCreateInput'
+            type: "HolidayCreateInput",
           })
-        )
+        ),
       },
       resolve: (_, args, context) => {
         return context.prisma.holiday.update({
@@ -101,24 +105,24 @@ t.field('updateHoliday', {
             region: args.data.region,
             description: args.data.description,
           },
-        })
+        });
       },
-    })
-```
+    });
 
-<h5>Delete Holiday</h5>
-```
-t.field('deleteHoliday', {
-      type: 'Holiday',
+    // Delete Holiday
+    t.field("deleteHoliday", {
+      type: "Holiday",
       args: {
         id: nonNull(intArg()),
       },
       resolve: (_, args, context) => {
         return context.prisma.holiday.delete({
           where: { id: args.id },
-        })
+        });
       },
-    })
+    });
+  },
+});
 ```
 
 <h3> 1. Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists. </h3>
