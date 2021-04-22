@@ -3,12 +3,124 @@
 
 To deploy locally 
 1. Clone Repo
-2. Follow scripts in main package.json <br>
-      postinstall <br>
+2. Follow scripts in main package.json -><br>
+      postinstall<br>
       launch<br>
       migrate<br>
       seed<br>
-      dev<br>
+      start -> will deploy frontend to localhost:300 and prisma playground to localhost:4000<br>
+
+<h4>Query Resolvers</h4>
+
+<h5>All Holidays</h5>
+```
+  t.nonNull.list.nonNull.field('allHolidays', {
+      type: 'Holiday',
+      resolve: (_parent, _args, context) => {
+        return context.prisma.holiday.findMany()
+      },
+    })
+```
+
+<h5>Holidays By Month</h5>
+```
+t.list.field('holidayByMonth', {
+      type: 'Holiday',
+      args: {
+        month: stringArg()
+      },
+      resolve: (_parent, args, context) => {
+        return context.prisma.holiday.findMany({
+          where: { month: args.month },
+        })
+      },
+    })
+```
+
+<h5>Holiday By Id</h5>
+```
+t.nullable.field('holidayById', {
+      type: 'Holiday',
+      args: {
+        id: intArg(),
+      },
+      resolve: (_parent, args, context) => {
+        return context.prisma.holiday.findUnique({
+          where: { id: args.id || undefined },
+        })
+      },
+    })
+```
+
+<h4>Mutation Resolvers</h4>
+
+<h5>Create Holiday</h5>
+```
+ t.nonNull.field('createHoliday', {
+      type: 'Holiday',
+      args: {
+        data: nonNull(
+          arg({
+            type: 'HolidayCreateInput',
+          }),
+        ),
+      },
+      resolve: (_, args, context) => {
+        return context.prisma.holiday.create({
+          data: {
+            name: args.data.name,
+            date: args.data.date,
+            month: args.data.month,
+            description: args.data.description,
+            region: args.data.region,
+          },
+        })
+      },
+    })
+```
+
+<h5>Update Holiday</h5>
+```
+t.field('updateHoliday', {
+      type: 'Holiday',
+      args: {
+        id: nonNull(intArg()),
+        data: nonNull(
+          arg({
+            type: 'HolidayCreateInput'
+          })
+        )
+      },
+      resolve: (_, args, context) => {
+        return context.prisma.holiday.update({
+          where: { id: args.id || undefined },
+          data: {
+            name: args.data.name,
+            date: args.data.date,
+            month: args.data.month,
+            region: args.data.region,
+            description: args.data.description,
+          },
+        })
+      },
+    })
+```
+
+<h5>Delete Holiday</h5>
+```
+t.field('deleteHoliday', {
+      type: 'Holiday',
+      args: {
+        id: nonNull(intArg()),
+      },
+      resolve: (_, args, context) => {
+        return context.prisma.holiday.delete({
+          where: { id: args.id },
+        })
+      },
+    })
+```
+
 
 
 <h3> 1. Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists. </h3>
