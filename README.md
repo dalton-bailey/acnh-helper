@@ -13,7 +13,7 @@ To deploy locally
 <h4>Query Resolvers</h4>
 
 <h5>All Holidays</h5>
-```
+```js
   t.nonNull.list.nonNull.field('allHolidays', {
       type: 'Holiday',
       resolve: (_parent, _args, context) => {
@@ -23,7 +23,7 @@ To deploy locally
 ```
 
 <h5>Holidays By Month</h5>
-```
+```js
 t.list.field('holidayByMonth', {
       type: 'Holiday',
       args: {
@@ -38,7 +38,7 @@ t.list.field('holidayByMonth', {
 ```
 
 <h5>Holiday By Id</h5>
-```
+```js
 t.nullable.field('holidayById', {
       type: 'Holiday',
       args: {
@@ -55,7 +55,7 @@ t.nullable.field('holidayById', {
 <h4>Mutation Resolvers</h4>
 
 <h5>Create Holiday</h5>
-```
+```js
  t.nonNull.field('createHoliday', {
       type: 'Holiday',
       args: {
@@ -80,7 +80,7 @@ t.nullable.field('holidayById', {
 ```
 
 <h5>Update Holiday</h5>
-```
+```js
 t.field('updateHoliday', {
       type: 'Holiday',
       args: {
@@ -107,7 +107,7 @@ t.field('updateHoliday', {
 ```
 
 <h5>Delete Holiday</h5>
-```
+```js
 t.field('deleteHoliday', {
       type: 'Holiday',
       args: {
