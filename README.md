@@ -14,12 +14,13 @@ To deploy locally
 
 <h5>All Holidays</h5>
 ```javascript
-t.nonNull.list.nonNull.field('allHolidays', {
+    t.nonNull.list.nonNull.field('allHolidays', {
       type: 'Holiday',
       resolve: (_parent, _args, context) => {
         return context.prisma.holiday.findMany()
       },
-    })```
+    })
+```
 
 <h5>Holidays By Month</h5>
 ```javascript
