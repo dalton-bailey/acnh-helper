@@ -1,14 +1,14 @@
 <h3>Graphql</h3>
 <h4>Animal Crossing Events & Holidays</h4>
 
-To deploy locally -> 
+To deploy locally 
 1. Clone Repo
-2. Follow scripts in main package.json
-      postinstall
-      launch
-      migrate
-      seed
-      dev
+2. Follow scripts in main package.json <br>
+      postinstall <br>
+      launch<br>
+      migrate<br>
+      seed<br>
+      dev<br>
 
 
 <h3> 1. Effectively use conditional logic and JavaScript array methods(e.g. Filter, Map, Reduce, Find) to render large lists. </h3>
