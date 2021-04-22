@@ -13,14 +13,12 @@ To deploy locally
 <h4>Query Resolvers</h4>
 
 <h5>All Holidays</h5>
-```js
-  t.nonNull.list.nonNull.field('allHolidays', {
+``` t.nonNull.list.nonNull.field('allHolidays', {
       type: 'Holiday',
       resolve: (_parent, _args, context) => {
         return context.prisma.holiday.findMany()
       },
-    })
-```
+    })```
 
 <h5>Holidays By Month</h5>
 ```js
