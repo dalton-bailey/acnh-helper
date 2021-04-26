@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import axios from "axios";
-// import _ from 'lodash'
 import { useQuery, useMutation, gql } from '@apollo/client'
 import {
   Container,
@@ -152,15 +150,6 @@ const HolidayList = () => {
         {holidayList.map((holiday) => {
           return (
             <div key={holiday.id} className="listItem">
-              <div className="listItemContentHolidays listItemContent">
-                <div className="holiday">
-                  <p>{holiday.name}</p>
-                  <p>
-                    When: {holiday.month} {holiday.date}
-                  </p>
-                  <p>Description:{holiday.description}</p>
-                  <p>Region:{holiday.region}</p>
-                </div>
                 <div className="btnList">
                   <IconButton
                     className="editBtn btn"
@@ -175,6 +164,16 @@ const HolidayList = () => {
                     <DeleteIcon />
                   </IconButton>
                 </div>
+              <div className="listItemContentHolidays listItemContent">
+                <div className="holiday">
+                  <h2>{holiday.name}</h2>
+                  <p>
+                    When: {holiday.month} {holiday.date}
+                  </p>
+                  <p>Description: {holiday.description}</p>
+                  <p>Region: {holiday.region}</p>
+                </div>
+              
               </div>
             </div>
           );
