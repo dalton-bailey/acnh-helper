@@ -14,6 +14,7 @@ import {
   DialogActions,
   Button,
   IconButton,
+  Box
 } from "@material-ui/core";
 import axios from "axios";
 import { Formik } from "formik";
@@ -311,7 +312,7 @@ const Fossils = () => {
           }}
           validationSchema={Yup.object().shape({
             name: Yup.string("Enter fossil name.").required("Name is required"),
-            image: Yup.string("Image URL"),
+            image: Yup.string("Image URL").required("is required"),
             price: Yup.number("Price"),
           })}
           onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
@@ -344,42 +345,41 @@ const Fossils = () => {
               <DialogTitle>Add Fossil</DialogTitle>
               <DialogContent>
                 <DialogContentText>Add a New Fossil</DialogContentText>
+                <Box>
                 <TextField
                   autoFocus
                   id="name"
                   name="name"
                   label="Fossil Name"
                   type="text"
-                  fullWidth
-                  value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   error={Boolean(touched.name && errors.name)}
                   helperText={touched.name && errors.name}
                 />
+                 <TextField
+                  id="price"
+                  name="price"
+                  label="Price"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.price && errors.price)}
+                  helperText={touched.price && errors.price}
+                />
+                </Box>
+              
                 <TextField
                   id="image"
                   name="image"
                   label="Image URL"
                   type="text"
                   fullWidth
-                  value={values.image}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   error={Boolean(touched.image && errors.image)}
                   helperText={touched.image && errors.image}
                 />
-                <TextField
-                  id="price"
-                  name="price"
-                  label="Price"
-                  fullWidth
-                  value={values.price}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  error={Boolean(touched.price && errors.price)}
-                  helperText={touched.price && errors.price}
-                />
+               
               </DialogContent>
               <DialogActions>
                 <Button onClick={handleCloseAdd}>Cancel</Button>

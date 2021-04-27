@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useQuery, useMutation, gql } from '@apollo/client'
+import { useQuery, useMutation, gql } from "@apollo/client";
 import {
   Container,
   makeStyles,
@@ -15,6 +15,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
+import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -50,30 +51,42 @@ const ALL_HOLIDAYS = gql`
       region
     }
   }
-`
-
-const UPDATE_HOLIDAY = gql`
-mutation updateHoliday ($id: Int!, $name: String!, $date: String, $month: String!, $description: String, $region: String) {
-  updateHoliday (id: $id,
-    data: {
-    name: $name,
-    date: $date,
-    month: $month,
-    description: $description,
-    region: $region,
-    }
-  ) {
-      id
-  }
-}
-`
+`;
 
 const DELETE_HOLIDAY = gql`
-mutation deleteHoliday ($id: Int!) {
-  deleteHoliday (id: $id) {
-    id
+  mutation deleteHoliday($id: Int!) {
+    deleteHoliday(id: $id) {
+      id
+    }
   }
-}
+`;
+
+const UPDATE_HOLIDAY = gql`
+  mutation updateHoliday(
+    $id: Int!
+    $name: String!
+    $date: String
+    $month: String!
+    $description: String
+    $region: String
+  ) {
+    updateHoliday(
+      id: $id
+      data: {
+        name: $name
+        date: $date
+        month: $month
+        description: $description
+        region: $region
+      }
+    ) {
+      id
+    }
+  }
+`;
+
+const CREATE_HOLIDAY = gql`
+  mutation createHoliday(data: HolidayCreateInput!): Holiday!
 `
 
 const HolidayList = () => {
@@ -81,40 +94,40 @@ const HolidayList = () => {
   const [selectedHoliday, setSelectedHoliday] = useState({ name: "" });
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
+  const [addOpen, setAddOpen] = useState(false);
 
+  const { loading, error, data } = useQuery(ALL_HOLIDAYS);
+  const [updateHoliday] = useMutation(UPDATE_HOLIDAY);
+  const [deleteHoliday] = useMutation(DELETE_HOLIDAY);
 
-    const { loading, error, data } = useQuery(ALL_HOLIDAYS)
-    const [updateHoliday] = useMutation(UPDATE_HOLIDAY);
-    const [deleteHoliday] = useMutation(DELETE_HOLIDAY)
+  if (loading) {
+    return (
+      <Container className={classes.root}>
+        <Typography className={classes.messages}>Loading...</Typography>
+      </Container>
+    );
+  }
 
-    if (loading) {
-      return (
-        <Container className={classes.root}>
-          <Typography className={classes.messages}>Loading...</Typography>
-        </Container>
-      )
-    }
+  if (error) {
+    return (
+      <Typography className={classes.messages}>{`${error.message}`}</Typography>
+    );
+  }
 
-    if (error) {
-      return (
-        <Typography className={classes.messages}>{`${error.message}`}</Typography>
-      )
-    }
-
-    const holidayList = data.allHolidays
+  const holidayList = data.allHolidays;
 
   const handleDelete = async () => {
     setDeleteOpen(false);
-    console.log(selectedHoliday.id)
+    console.log(selectedHoliday.id);
     try {
-      deleteHoliday({ variables: { id: selectedHoliday.id } })
+      deleteHoliday({ variables: { id: selectedHoliday.id } });
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   };
 
   const handleClickEditOpen = (holiday) => {
-    setSelectedHoliday(holiday.holiday)
+    setSelectedHoliday(holiday.holiday);
     setEditOpen(true);
   };
 
@@ -122,21 +135,33 @@ const HolidayList = () => {
     setEditOpen(false);
   };
 
-    const handleUpdate = async (values) => {
-        updateHoliday({
-          variables: {
-            id: selectedHoliday.id,
-            name: values.name,
-            date: values.date,
-            month: values.month,
-            region: values.region,
-            description: values.description
-          }
-        })
-    }
+  const handleUpdate = async (values) => {
+    updateHoliday({
+      variables: {
+        id: selectedHoliday.id,
+        name: values.name,
+        date: values.date,
+        month: values.month,
+        region: values.region,
+        description: values.description,
+      },
+    });
+  };
+
+  const handleAdd = async (values) => {
+    CREATE_HOLIDAY({
+      variables: {
+        name: values.name,
+        date: values.date,
+        month: values.month,
+        region: values.region,
+        description: values.description,
+      }
+    })
+  }
 
   const handleClickDeleteOpen = (holiday) => {
-    setSelectedHoliday(holiday.holiday)
+    setSelectedHoliday(holiday.holiday);
     setDeleteOpen(true);
   };
 
@@ -144,26 +169,37 @@ const HolidayList = () => {
     setDeleteOpen(false);
   };
 
+  const handleClickAddOpen = () => {
+    setAddOpen(true);
+  };
+
+  const handleCloseAdd = () => {
+    setAddOpen(false);
+  };
+
   return (
     <>
+      <IconButton onClick={() => handleClickAddOpen()}>
+        <AddIcon />
+      </IconButton>
       <Container className={classes.root}>
         {holidayList.map((holiday) => {
           return (
             <div key={holiday.id} className="listItem">
-                <div className="btnList">
-                  <IconButton
-                    className="editBtn btn"
-                    onClick={() => handleClickEditOpen({ holiday })}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton
-                    className="deleteBtn btn"
-                    onClick={() => handleClickDeleteOpen({ holiday })}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </div>
+              <div className="btnList">
+                <IconButton
+                  className="editBtn btn"
+                  onClick={() => handleClickEditOpen({ holiday })}
+                >
+                  <EditIcon />
+                </IconButton>
+                <IconButton
+                  className="deleteBtn btn"
+                  onClick={() => handleClickDeleteOpen({ holiday })}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </div>
               <div className="listItemContentHolidays listItemContent">
                 <div className="holiday">
                   <h2>{holiday.name}</h2>
@@ -173,7 +209,6 @@ const HolidayList = () => {
                   <p>Description: {holiday.description}</p>
                   <p>Region: {holiday.region}</p>
                 </div>
-              
               </div>
             </div>
           );
@@ -203,7 +238,7 @@ const HolidayList = () => {
           })}
           onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
             try {
-                await handleUpdate(values)
+              await handleUpdate(values);
               handleCloseEdit();
             } catch (err) {
               console.error(err);
@@ -322,6 +357,123 @@ const HolidayList = () => {
             Delete
           </Button>
         </DialogActions>
+      </Dialog>
+      <Dialog open={addOpen} onClose={handleCloseAdd}>
+        <Formik
+          initialValues={{
+            name: "New Holiday",
+            date: "New Date",
+            month: "Month",
+            region: "Region",
+            description: "Description",
+          }}
+          validationSchema={Yup.object().shape({
+            name: Yup.string("Enter holiday name.").required(
+              "Name is required"
+            ),
+            date: Yup.string("Enter holiday date"),
+            month: Yup.string("Enter holiday month").required(
+              "Month is required"
+            ),
+            region: Yup.string("Enter region"),
+            description: Yup.string("Enter description"),
+          })}
+          onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+            try {
+              await handleAdd(values);
+              handleCloseAdd();
+            } catch (err) {
+              console.error(err);
+              setStatus({ success: false });
+              setErrors({ submit: err.message });
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) => (
+            <form
+              noValidate
+              autoComplete="off"
+              onSubmit={handleSubmit}
+              className={classes.dialogContent}
+            >
+              <DialogTitle>Add Holiday</DialogTitle>
+              <DialogContent>
+                <DialogContentText>Add a New Holiday</DialogContentText>
+                <TextField
+                  autoFocus
+                  id="name"
+                  name="name"
+                  label="Holiday Name"
+                  type="text"
+                  fullWidth
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.name && errors.name)}
+                  helperText={touched.name && errors.name}
+                />
+                <Box>
+                  <TextField
+                    id="date"
+                    name="date"
+                    label="Holiday Date"
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={Boolean(touched.date && errors.date)}
+                    helperText={touched.date && errors.date}
+                  />
+
+                  <TextField
+                    id="month"
+                    name="month"
+                    label="Holiday Month"
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={Boolean(touched.month && errors.month)}
+                    helperText={touched.month && errors.month}
+                  />
+                </Box>
+
+                <TextField
+                  id="region"
+                  name="region"
+                  label="Holiday Region"
+                  type="text"
+                  fullWidth
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.region && errors.region)}
+                  helperText={touched.region && errors.region}
+                />
+                <TextField
+                  id="description"
+                  name="description"
+                  label="Holiday Description"
+                  type="text"
+                  fullWidth
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={Boolean(touched.description && errors.description)}
+                  helperText={touched.description && errors.description}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleCloseAdd}>Cancel</Button>
+                <Button type="submit">Add</Button>
+              </DialogActions>
+            </form>
+          )}
+        </Formik>
       </Dialog>
     </>
   );
