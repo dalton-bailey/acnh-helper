@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { useQuery, useMutation, gql } from "@apollo/client";
+import React, { useState } from "react";
 import {
   Container,
   makeStyles,
@@ -86,7 +86,19 @@ const UPDATE_HOLIDAY = gql`
 `;
 
 const CREATE_HOLIDAY = gql`
-  mutation createHoliday(data: HolidayCreateInput!): Holiday!
+  mutation createHoliday(
+    $name: String!
+    $date: String
+    $month: String!
+    $description: String
+    $region: String
+    ) {
+      createHoliday(
+        data: {name: $name, date: $date, month: $month, description: $description, region: $region }
+        ) {
+        id
+      }
+    }
 `
 
 const HolidayList = () => {
@@ -99,6 +111,7 @@ const HolidayList = () => {
   const { loading, error, data } = useQuery(ALL_HOLIDAYS);
   const [updateHoliday] = useMutation(UPDATE_HOLIDAY);
   const [deleteHoliday] = useMutation(DELETE_HOLIDAY);
+  const [createHoliday] = useMutation(CREATE_HOLIDAY)
 
   if (loading) {
     return (
@@ -149,7 +162,7 @@ const HolidayList = () => {
   };
 
   const handleAdd = async (values) => {
-    CREATE_HOLIDAY({
+    createHoliday({
       variables: {
         name: values.name,
         date: values.date,
