@@ -5,7 +5,7 @@ To deploy locally
 
 1. Clone Repo
 2. Follow scripts in main package.json -><br>
-   npminstall<br>
+   npm install<br>
    launch<br>
    migrate<br>
    seed<br>
