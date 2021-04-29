@@ -109,9 +109,9 @@ const HolidayList = () => {
   const [addOpen, setAddOpen] = useState(false);
 
   const { loading, error, data } = useQuery(ALL_HOLIDAYS);
-  const [updateHoliday] = useMutation(UPDATE_HOLIDAY);
-  const [deleteHoliday] = useMutation(DELETE_HOLIDAY);
-  const [createHoliday] = useMutation(CREATE_HOLIDAY)
+  const [updateHoliday] = useMutation(UPDATE_HOLIDAY, {refetchQueries:[{ query: ALL_HOLIDAYS }]});
+  const [deleteHoliday] = useMutation(DELETE_HOLIDAY, {refetchQueries:[{ query: ALL_HOLIDAYS }]});
+  const [createHoliday] = useMutation(CREATE_HOLIDAY, {refetchQueries:[{ query: ALL_HOLIDAYS }]})
 
   if (loading) {
     return (
@@ -133,7 +133,8 @@ const HolidayList = () => {
     setDeleteOpen(false);
     console.log(selectedHoliday.id);
     try {
-      deleteHoliday({ variables: { id: selectedHoliday.id } });
+      deleteHoliday({ variables: { id: selectedHoliday.id } 
+      });
     } catch (err) {
       console.error(err);
     }

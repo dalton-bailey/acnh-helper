@@ -27,7 +27,7 @@
   },
   "scripts": {
     "postinstall": "cd graphql-server && npm install",
-    "launch": "cd graphql-server && npm run nuke && npm run launchDocker",
+    "launch": "cd graphql-server && npm run launchDocker",
     "migrate": "cd graphql-server && npm run migrate",
     "seed": "cd graphql-server && npm run seed",
     "start-dev": "cd graphql-server && npm run dev",
