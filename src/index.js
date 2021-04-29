@@ -8,7 +8,7 @@ import AuthContextProvider from "./contexts/AuthContext";
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client'
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: 'https://graphql-acnh.herokuapp.com/',
   cache: new InMemoryCache(),
 })
 
