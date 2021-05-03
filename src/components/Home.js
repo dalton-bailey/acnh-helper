@@ -1,10 +1,10 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
-import { FaFish } from "react-icons/fa";
-import { IoIosBug } from "react-icons/io";
-import { FaPaw } from 'react-icons/fa';
-import { GiSadCrab } from 'react-icons/gi';
+// import { FaFish } from "react-icons/fa";
+// import { IoIosBug } from "react-icons/io";
+// import { FaPaw } from 'react-icons/fa';
+// import { GiSadCrab } from 'react-icons/gi';
 import {GiDinosaurBones} from 'react-icons/gi'
 import { BsFillPersonFill } from 'react-icons/bs'
 import Login from "./Login";
