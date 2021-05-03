@@ -5,11 +5,11 @@ To deploy locally
 
 1. Clone Repo
 2. Follow scripts in main package.json -><br>
-   npm install<br>
-   launch<br>
-   migrate<br>
-   seed<br>
-   start -> will deploy frontend to localhost:300 and prisma playground to localhost:4000<br>
+   npm run install<br>
+   npm run launch<br>
+   npm run migrate<br>
+   npm run seed<br>
+   npm start -> will deploy frontend to localhost:300 and prisma playground to localhost:4000<br>
 
 <h4>Query Resolvers</h4>
 
