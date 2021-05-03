@@ -24,26 +24,26 @@ const Home = () => {
   return (
     <div className={classes.root}>
     <div className="homeMenu">
-      <NavLink to="/fish" className="menuItem">
+      {/* <NavLink to="/fish" className="menuItem">
         <FaFish className="icon"/>
         <p>FISH</p>
-      </NavLink>
-      <NavLink to="/bugs" className="menuItem">
+      </NavLink> */}
+      {/* <NavLink to="/bugs" className="menuItem">
         <IoIosBug className="icon"/>
         <p>BUGS</p>
-      </NavLink>
-      <NavLink to="/seacreatures" className="menuItem">
+      </NavLink> */}
+      {/* <NavLink to="/seacreatures" className="menuItem">
         <GiSadCrab className="icon"/>
         <p>SEA CREATURES</p>
-      </NavLink>
+      </NavLink> */}
       <NavLink to="/fossils" className="menuItem">
         <GiDinosaurBones className="icon"/>
         <p>FOSSILS</p>
       </NavLink>
-      <NavLink to="/villagers" className="menuItem">
+      {/* <NavLink to="/villagers" className="menuItem">
         <FaPaw className="icon"/>
         <p>VILLAGERS</p>
-      </NavLink>
+      </NavLink> */}
       <NavLink to="/holidays" className="menuItem">
         <p>HOLIDAYS</p>
       </NavLink>

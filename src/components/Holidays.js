@@ -38,6 +38,9 @@ const useStyles = makeStyles(() => ({
   typeWidth: {
     width: "100%",
   },
+  addText: {
+    color: "#fff",
+  }
 }));
 
 const ALL_HOLIDAYS = gql`
@@ -193,8 +196,7 @@ const HolidayList = () => {
 
   return (
     <>
-      <IconButton onClick={() => handleClickAddOpen()}>
-        <AddIcon />
+      <IconButton onClick={() => handleClickAddOpen()}><AddIcon />
       </IconButton>
       <Container className={classes.root}>
         {holidayList.map((holiday) => {

@@ -18,12 +18,12 @@ function App() {
       <div className="App">
         <Home />
         <Switch>
-          <Route path='/fish' component={FishLayout} />
-          <Route path='/bugs' component={BugsLayout} />
-          <Route path='/seacreatures' component={SeaLayout} />
-          <Route path='/villagers' component={VillagersLayout} />
+          {/* <Route path='/fish' component={FishLayout} /> */}
+          {/* <Route path='/bugs' component={BugsLayout} /> */}
+          {/* <Route path='/seacreatures' component={SeaLayout} /> */}
+          {/* <Route path='/villagers' component={VillagersLayout} /> */}
           <Route path='/fossils' component={Fossils}/>
-          <Route path='/movies' component={MovieList} />
+          {/* <Route path='/movies' component={MovieList} /> */}
           <Route path='/holidays' component={Holidays} />
         </Switch>
       </div>
