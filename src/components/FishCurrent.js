@@ -12,7 +12,7 @@ const CurrentFish = () => {
   let month = new Date().getMonth() + 1;
   let hour = new Date().getHours()
 
-  console.log(hour)
+  // console.log(hour)
 
   const currentFishData = fishesData.fishes.filter((fish) =>
     fish.availability["month-array-northern"].includes(month) && fish.availability["time-array"].includes(hour)

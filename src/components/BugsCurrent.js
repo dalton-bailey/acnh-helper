@@ -10,7 +10,7 @@ const CurrentBugs = () => {
   let month = new Date().getMonth() + 1;
   let hour = new Date().getHours()
 
-  console.log(month, hour)
+  // console.log(month, hour)
 
   const currentBugsData = bugsData.bugs.filter(bug => bug.availability["month-array-northern"].includes(month) && bug.availability["time-array"].includes(hour))
 
