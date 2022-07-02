@@ -59,15 +59,15 @@ export default function SimpleTabs() {
 
       <AppBar position="static" className={classes.appBar}>
         <Tabs value={value} onChange={handleChange} centered>
-          <Tab label="My Villagers " {...a11yProps(0)} />
-          <Tab label="All Villagers" {...a11yProps(1)} />
+        <Tab label="All Villagers" {...a11yProps(0)} />
+        <Tab label="My Villagers" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <FavVillagers />
+      <Villagers />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Villagers />
+        <FavVillagers />
       </TabPanel>
     </div>
   );

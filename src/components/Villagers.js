@@ -7,6 +7,7 @@ import PetsIcon from "@material-ui/icons/Pets";
 import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = makeStyles({
   searchDiv: {
@@ -30,6 +31,9 @@ const useStyles = makeStyles({
     width: 340,
     padding: 8,
   },
+  myVillager: {
+    
+  }
 });
 
 const Villagers = () => {
@@ -94,6 +98,10 @@ const Villagers = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="myVillager">
+            <HomeIcon />
+            <p>My Villager</p>
           </div>
         </div>
       );

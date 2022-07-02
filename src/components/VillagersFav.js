@@ -14,51 +14,51 @@ const Villagers = () => {
 
   useEffect(() => {
     if (villagersData.villagers.length > 0) {
-      const temp = [];
+      const list = [];
 
-      const daisy = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Daisy"
-      );
-      const buck = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Buck"
-      );
-      const nan = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Nan"
-      );
-      const stitches = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Stitches"
-      );
-      const chevre = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Chevre"
-      );
-      const graham = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Graham"
-      )
-      const croque = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Croque"
-      )
-      const carmen = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Carmen"
-      )
-      const tank = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Tank"
-      )
-      const claudia = villagersData.villagers.find(
-        (villager) => villager.name["name-USen"] === "Claudia"
-      )
+      // const daisy = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Daisy"
+      // );
+      // const buck = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Buck"
+      // );
+      // const nan = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Nan"
+      // );
+      // const stitches = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Stitches"
+      // );
+      // const chevre = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Chevre"
+      // );
+      // const graham = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Graham"
+      // )
+      // const croque = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Croque"
+      // )
+      // const carmen = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Carmen"
+      // )
+      // const tank = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Tank"
+      // )
+      // const claudia = villagersData.villagers.find(
+      //   (villager) => villager.name["name-USen"] === "Claudia"
+      // )
 
-      temp.push(croque)
-      temp.push(daisy);
-      temp.push(buck);
-      temp.push(nan);
-      temp.push(stitches);
-      temp.push(chevre);
-      temp.push(graham)
-      temp.push(carmen)
-      temp.push(tank)
-      temp.push(claudia)
+      // temp.push(croque)
+      // temp.push(daisy);
+      // temp.push(buck);
+      // temp.push(nan);
+      // temp.push(stitches);
+      // temp.push(chevre);
+      // temp.push(graham)
+      // temp.push(carmen)
+      // temp.push(tank)
+      // temp.push(claudia)
 
-      setMyFavVillagers(temp);
+      setMyFavVillagers(list);
     }
   }, [villagersData]);
 
