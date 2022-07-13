@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LazyLoad from "react-lazyload";
 import CakeIcon from "@material-ui/icons/Cake";
 import FavoriteIcon from "@material-ui/icons/Favorite";
@@ -8,6 +8,7 @@ import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from '@material-ui/icons/Home';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   searchDiv: {
@@ -30,16 +31,20 @@ const useStyles = makeStyles({
     border: "none",
     width: 340,
     padding: 8,
-  },
-  myVillager: {
-    
   }
 });
 
-const Villagers = () => {
+const Villagers = ({setMyFavVillagers, myFavVillagers}) => {
   const villagersData = useAnmialCrossingContext();
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = useState("");
   const classes = useStyles();
+  // const [isFavVillager, setIsFavVilalger] = useState(false)
+
+  const toggleIsFav = (villager) => {
+    setMyFavVillagers(current => !current);
+  }
+
+  console.log(myFavVillagers)
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
@@ -99,9 +104,11 @@ const Villagers = () => {
               </div>
             </div>
           </div>
-          <div className="myVillager">
+          <div>
+            {/* <Button variant="outlined" onClick={() => setMyFavVillagers((prevVillagers) => [...prevVillagers, villager])}> */}
+            <Button variant={`${ myFavVillagers === false ? 'outlined' : 'contained'}`} onClick={() => {setMyFavVillagers((prevVillagers) => [...prevVillagers, villager]); toggleIsFav(villager)}}>
             <HomeIcon />
-            <p>My Villager</p>
+            </Button>
           </div>
         </div>
       );

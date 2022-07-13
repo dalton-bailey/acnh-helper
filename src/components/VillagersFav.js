@@ -1,67 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import LazyLoad from "react-lazyload";
 import CakeIcon from "@material-ui/icons/Cake";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import WcIcon from "@material-ui/icons/Wc";
 import PetsIcon from "@material-ui/icons/Pets";
-import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
+import Button from "@material-ui/core/Button";
+import HomeIcon from "@material-ui/icons/Home";
 
 
-const Villagers = () => {  
-  const villagersData = useAnmialCrossingContext();
-
-  const [myFavVillagers, setMyFavVillagers] = useState([]);
-
-  useEffect(() => {
-    if (villagersData.villagers.length > 0) {
-      const list = [];
-
-      // const daisy = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Daisy"
-      // );
-      // const buck = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Buck"
-      // );
-      // const nan = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Nan"
-      // );
-      // const stitches = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Stitches"
-      // );
-      // const chevre = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Chevre"
-      // );
-      // const graham = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Graham"
-      // )
-      // const croque = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Croque"
-      // )
-      // const carmen = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Carmen"
-      // )
-      // const tank = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Tank"
-      // )
-      // const claudia = villagersData.villagers.find(
-      //   (villager) => villager.name["name-USen"] === "Claudia"
-      // )
-
-      // temp.push(croque)
-      // temp.push(daisy);
-      // temp.push(buck);
-      // temp.push(nan);
-      // temp.push(stitches);
-      // temp.push(chevre);
-      // temp.push(graham)
-      // temp.push(carmen)
-      // temp.push(tank)
-      // temp.push(claudia)
-
-      setMyFavVillagers(list);
-    }
-  }, [villagersData]);
-
+const Villagers = ({ myFavVillagers, setMyFavVillagers }) => {  
   return (
     <div className="villagers">
       <h1>My Villagers</h1>
@@ -102,6 +49,11 @@ const Villagers = () => {
                   </div>
                 </div>
               </div>
+              <div>
+            <Button variant="contained" onClick={() => console.log(villager)}>
+            <HomeIcon />
+            </Button>
+          </div>
             </div>
           );
         })}

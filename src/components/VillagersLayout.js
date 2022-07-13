@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -47,7 +47,8 @@ function a11yProps(index) {
 
 export default function SimpleTabs() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [myFavVillagers, setMyFavVillagers] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,10 +65,10 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-      <Villagers />
+      <Villagers myFavVillagers={myFavVillagers} setMyFavVillagers={setMyFavVillagers}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <FavVillagers />
+        <FavVillagers myFavVillagers={myFavVillagers} setMyFavVillagers={setMyFavVillagers}/>
       </TabPanel>
     </div>
   );
