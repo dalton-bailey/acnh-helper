@@ -9,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from '@material-ui/icons/Home';
 import Button from '@material-ui/core/Button';
+// import CelebrationIcon from '@material-ui/icons/Celebration';
 
 const useStyles = makeStyles({
   searchDiv: {
