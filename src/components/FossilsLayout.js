@@ -59,7 +59,7 @@ const Fossils = () => {
 
   const fetchFossils = async () => {
     try {
-      const fossils = await axios.get(`https://afternoon-temple-99772.herokuapp.com/fossil`);
+      const fossils = await axios.get(`https://afternoon-temple-99772.herokuapp.com/fossils`);
       setFossilsData(fossils.data);
       console.log(fossils.data);
     } catch (err) {
@@ -71,7 +71,7 @@ const Fossils = () => {
     setDeleteOpen(false);
     console.log(selectedFossil._id);
     try {
-      await axios.delete(`https://afternoon-temple-99772.herokuapp.com/fossil/delete`, {
+      await axios.delete(`https://afternoon-temple-99772.herokuapp.com/fossils/delete`, {
         data: {
           fossilId: selectedFossil._id,
         },
@@ -84,7 +84,7 @@ const Fossils = () => {
 
   const handleUpdate = async (values) => {
     try {
-      const result = await axios.put(`https://afternoon-temple-99772.herokuapp.com/fossil/update`, {
+      const result = await axios.put(`https://afternoon-temple-99772.herokuapp.com/fossils/update`, {
         data: {
           fossilId: values.id,
           name: values.name,
@@ -103,7 +103,7 @@ const Fossils = () => {
   const handleAdd = async (values) => {
     console.log(values.name, values.image, values.price)
     try {
-      const result = await axios.post(`https://afternoon-temple-99772.herokuapp.com/fossil`, {
+      const result = await axios.post(`https://afternoon-temple-99772.herokuapp.com/fossils`, {
           name: values.name,
           image: values.image,
           price: values.price,
@@ -119,6 +119,7 @@ const Fossils = () => {
   const handleClickEditOpen = (fossil) => {
     setSelectedFossil(fossil.fossil);
     setEditOpen(true);
+
   };
 
   const handleCloseEdit = () => {

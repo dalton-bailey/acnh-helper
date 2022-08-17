@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LazyLoad from "react-lazyload";
 import CakeIcon from "@material-ui/icons/Cake";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import WcIcon from "@material-ui/icons/Wc";
 import PetsIcon from "@material-ui/icons/Pets";
-import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
+// import { useAnmialCrossingContext } from "../contexts/AnimalCrossingContext";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from '@material-ui/icons/Home';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
 // import CelebrationIcon from '@material-ui/icons/Celebration';
 
 const useStyles = makeStyles({
@@ -36,31 +37,84 @@ const useStyles = makeStyles({
 });
 
 const Villagers = ({setMyFavVillagers, myFavVillagers}) => {
-  const villagersData = useAnmialCrossingContext();
-  const [searchValue, setSearchValue] = useState("");
   const classes = useStyles();
-  // const [isFavVillager, setIsFavVilalger] = useState(false)
+  // const villagersData = useAnmialCrossingContext();
+  const [villagersData, setVillagersData] = useState([])
+  const [searchValue, setSearchValue] = useState("");
+  // const [isFavVillager, setIsFavVillger] = useState(false)
 
-  const toggleIsFav = (villager) => {
-    setMyFavVillagers(current => !current);
+  const fetchFavVillagers = async () => {
+    try {
+      const favVillagers = await axios.get(`https://afternoon-temple-99772.herokuapp.com/fav-villager`);
+      // const favVillagers = await axios.get(`localhost:5050/fav-villager`);
+      setMyFavVillagers(favVillagers.data)
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const fetchVillagers = async () => {
+    try {
+      const villagers = await axios.get(`https://afternoon-temple-99772.herokuapp.com/villagers`);
+      // const villagers = await axios.get(`localhost:5050/villagers`);
+      setVillagersData(villagers.data)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  
+  const handleAdd = async (villager) => {
+    try {
+      const result = await axios.post(`https://afternoon-temple-99772.herokuapp.com/fav-villager`, {
+        // const result = await axios.post(`localhost:5050/fav-villager`, {
+          name: villager.name,
+          birthday: villager.birthday,
+          image: villager.image,
+          iconImage: villager.iconImage,
+          catchPhrase: villager.catchPhrase,
+          saying: villager.saying,
+          gender: villager.gender,
+          personality: villager.personality, 
+          species: villager.species,
+      });
+      if (result.status === 200) {
+        fetchFavVillagers()
+        console.log(true)
+      }
+    } catch (err) {
+      console.log(err)
+    }
   }
 
-  console.log(myFavVillagers)
+  useEffect(() => {
+    fetchFavVillagers();
+  });
+
+  useEffect(() => {
+    fetchVillagers();
+  }, []);
+
+  // const toggleIsFav = (villager) => {
+  //   // setMyFavVillagers(current => !current);
+  //   myFavVillagers.push(villager)
+  //   console.log(villager._id)
+
+  // }
 
   const handleChange = (event) => {
     setSearchValue(event.target.value);
   };
 
-  const showVillagers = villagersData.villagers
+  const showVillagers = villagersData
     .filter((villager) => {
       return (
-        villager.name["name-USen"]
+        villager.name
           .toLowerCase()
           .includes(searchValue.toLowerCase()) ||
         villager.personality
           .toLowerCase()
           .includes(searchValue.toLowerCase()) ||
-        villager["birthday-string"]
+        villager.birthday
           .toLowerCase()
           .includes(searchValue.toLowerCase()) ||
         villager.species
@@ -71,20 +125,20 @@ const Villagers = ({setMyFavVillagers, myFavVillagers}) => {
 
     .map((villager) => {
       return (
-        <div key={villager.id} className="listItem">
+        <div key={villager._id} className="listItem">
           <div className="listItemHeader">
             <LazyLoad>
-              <img alt="" src={villager.icon_uri} />
+              <img alt="" src={villager.iconImage} />
             </LazyLoad>
-            <p>{villager.name["name-USen"]}</p>
+            <p>{villager.name}</p>
           </div>
           <div>
             <div className="listItemContent">
               <div>
                 <LazyLoad>
-                  <img alt="" src={villager.image_uri} />
+                  <img alt="" src={villager.image} />
                 </LazyLoad>
-                <p>"{villager["catch-phrase"]}"</p>
+                <p>"{villager.catchPhrase}"</p>
                 <p className="saying">{villager.saying}</p>
               </div>
               <div className="attributes">
@@ -96,7 +150,7 @@ const Villagers = ({setMyFavVillagers, myFavVillagers}) => {
                 </div>
                 <div className="attribute">
                   <CakeIcon />
-                  <p>{villager["birthday-string"]}</p>
+                  <p>{villager.birthday}</p>
                 </div>
                 <div className="attribute">
                   <FavoriteIcon />
@@ -106,8 +160,8 @@ const Villagers = ({setMyFavVillagers, myFavVillagers}) => {
             </div>
           </div>
           <div>
+            <Button variant="outlined" onClick={() => {setMyFavVillagers((prevVillagers) => [...prevVillagers, villager]); handleAdd(villager)}}>
             {/* <Button variant="outlined" onClick={() => setMyFavVillagers((prevVillagers) => [...prevVillagers, villager])}> */}
-            <Button variant={`${ myFavVillagers === false ? 'outlined' : 'contained'}`} onClick={() => {setMyFavVillagers((prevVillagers) => [...prevVillagers, villager]); toggleIsFav(villager)}}>
             <HomeIcon />
             </Button>
           </div>
@@ -115,13 +169,13 @@ const Villagers = ({setMyFavVillagers, myFavVillagers}) => {
       );
     });
 
+
   return (
     <div className="villagers">
       <h1>All Villagers</h1>
       <div className={classes.searchDiv}>
         <div className={classes.search}>
           <SearchIcon />
-
           <input
             className={classes.searchBar}
             placeholder="Search name, personality, birthday, species"
